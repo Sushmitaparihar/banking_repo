@@ -1,0 +1,2653 @@
+  [1m[35m (390.1ms)[0m  [1m[35mCREATE DATABASE "db/development_pg" ENCODING = 'utf8'[0m
+  [1m[35m (238.5ms)[0m  [1m[35mCREATE DATABASE "db/test_pg" ENCODING = 'utf8'[0m
+  [1m[35m (33.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (36.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6912912541936343250)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-08-03 05:26:47.095110"], ["updated_at", "2023-08-03 05:26:47.095110"]]
+  [1m[35m (6.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(6912912541936343250)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6912912541936343250)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20230803053318)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (31.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "amount" integer, "pin" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230803053318"]]
+  [1m[35m (6.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAccounts (20230803053336)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (14.2ms)[0m  [1m[35mCREATE TABLE "accounts" ("id" bigserial primary key, "user_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (13.1ms)[0m  [1m[35mCREATE  INDEX  "index_accounts_on_user_id" ON "accounts"  ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230803053336"]]
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(6912912541936343250)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6912912541936343250)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(6912912541936343250)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (93.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "db/development_pg"[0m
+  [1m[35m (94.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "db/test_pg"[0m
+  [1m[35m (231.1ms)[0m  [1m[35mCREATE DATABASE "db/development_pg" ENCODING = 'utf8'[0m
+  [1m[35m (234.1ms)[0m  [1m[35mCREATE DATABASE "db/test_pg" ENCODING = 'utf8'[0m
+  [1m[35m (35.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (32.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6912912541936343250)[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20230803053318)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (29.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "amount" integer, "pin" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230803053318"]]
+  [1m[35m (6.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAccounts (20230803053336)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (13.9ms)[0m  [1m[35mCREATE TABLE "accounts" ("id" bigserial primary key, "user_id" bigint, "account_number" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (12.4ms)[0m  [1m[35mCREATE  INDEX  "index_accounts_on_user_id" ON "accounts"  ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230803053336"]]
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-08-03 05:46:55.733293"], ["updated_at", "2023-08-03 05:46:55.733293"]]
+  [1m[35m (6.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(6912912541936343250)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "amount", "pin", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "surbhi"], ["amount", 10000], ["pin", 1234], ["created_at", "2023-08-03 05:52:54.648324"], ["updated_at", "2023-08-03 05:52:54.648324"]]
+  [1m[35m (12.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAccount Create (0.8ms)[0m  [1m[32mINSERT INTO "accounts" ("user_id", "account_number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 1], ["account_number", 12345678], ["created_at", "2023-08-03 05:54:10.734491"], ["updated_at", "2023-08-03 05:54:10.734491"]]
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mAccount Load (0.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" LIMIT $1[0m  [["LIMIT", 11]]
+DEPRECATION WARNING: Using `bin/rake routes` is deprecated and will be removed in Rails 6.1. Use `bin/rails routes` instead.
+ (called from load at /usr/share/rvm/gems/ruby-2.5.8/bin/rake:25)
+DEPRECATION WARNING: Using `bin/rake routes` is deprecated and will be removed in Rails 6.1. Use `bin/rails routes` instead.
+ (called from load at /usr/share/rvm/gems/ruby-2.5.8/bin/rake:25)
+Started POST "/users" for ::1 at 2023-08-03 11:37:41 +0530
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as */*
+  Parameters: {"data"=>{"attributes"=>{"name"=>"neha", "amount"=>10000, "pin"=>1204}}, "user"=>{}}
+Completed 400 Bad Request in 0ms (ActiveRecord: 2.0ms | Allocations: 202)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/users_controller.rb:19:in `user_params'
+app/controllers/users_controller.rb:5:in `create'
+Started POST "/users" for ::1 at 2023-08-03 11:42:36 +0530
+Processing by UsersController#create as */*
+  Parameters: {"data"=>{"attributes"=>{"name"=>"neha", "amount"=>10000, "pin"=>1204}}, "user"=>{}}
+Completed 400 Bad Request in 37937ms (ActiveRecord: 2.6ms | Allocations: 57596)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/users_controller.rb:24:in `user_params'
+app/controllers/users_controller.rb:6:in `create'
+Started POST "/users" for ::1 at 2023-08-03 11:43:23 +0530
+Processing by UsersController#create as */*
+  Parameters: {"data"=>{"attributes"=>{"name"=>"neha", "amount"=>10000, "pin"=>1204}}, "user"=>{}}
+Completed 400 Bad Request in 121716ms (ActiveRecord: 1.5ms | Allocations: 3942)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/users_controller.rb:20:in `user_params'
+app/controllers/users_controller.rb:6:in `create'
+Started POST "/users" for ::1 at 2023-08-03 11:45:29 +0530
+Processing by UsersController#create as */*
+  Parameters: {"data"=>{"attributes"=>{"name"=>"neha", "amount"=>10000, "pin"=>1204}}, "user"=>{}}
+Completed 400 Bad Request in 3198ms (ActiveRecord: 1.4ms | Allocations: 1993)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/users_controller.rb:20:in `user_params'
+app/controllers/users_controller.rb:6:in `create'
+Started POST "/users" for ::1 at 2023-08-03 11:47:23 +0530
+Processing by UsersController#create as */*
+  Parameters: {"data"=>{"attributes"=>{"name"=>"neha", "amount"=>10000, "pin"=>1204}}, "user"=>{}}
+Completed 400 Bad Request in 22040ms (ActiveRecord: 0.0ms | Allocations: 2025)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/users_controller.rb:20:in `user_params'
+app/controllers/users_controller.rb:6:in `create'
+Started POST "/users" for ::1 at 2023-08-03 11:47:49 +0530
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"neha", "amount"=>10000, "pin"=>1204, "user"=>{"name"=>"neha", "amount"=>10000, "pin"=>1204}}
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:7:in `create'
+  [1m[36mUser Create (2.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "amount", "pin", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "neha"], ["amount", 10000], ["pin", 1204], ["created_at", "2023-08-03 06:17:53.106371"], ["updated_at", "2023-08-03 06:17:53.106371"]]
+  ↳ app/controllers/users_controller.rb:7:in `create'
+  [1m[35m (8.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:7:in `create'
+Completed 200 OK in 4015ms (Views: 1.4ms | ActiveRecord: 19.6ms | Allocations: 9037)
+
+
+DEPRECATION WARNING: Using `bin/rake routes` is deprecated and will be removed in Rails 6.1. Use `bin/rails routes` instead.
+ (called from load at /usr/share/rvm/gems/ruby-2.5.8/bin/rake:25)
+DEPRECATION WARNING: Using `bin/rake routes` is deprecated and will be removed in Rails 6.1. Use `bin/rails routes` instead.
+ (called from load at /usr/share/rvm/gems/ruby-2.5.8/bin/rake:25)
+Started POST "/accounts" for ::1 at 2023-08-03 11:55:34 +0530
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/home/ankush/bankingproject/app/controllers/accounts_controller.rb:22: syntax error, unexpected keyword_end, expecting end-of-input):
+  
+app/controllers/accounts_controller.rb:22: syntax error, unexpected keyword_end, expecting end-of-input
+app/controllers/accounts_controller.rb:22: syntax error, unexpected keyword_end, expecting end-of-input
+Started POST "/accounts" for ::1 at 2023-08-03 11:56:13 +0530
+Processing by AccountsController#create as */*
+  Parameters: {"user_id"=>2, "account_number"=>"134567890", "account"=>{"user_id"=>2, "account_number"=>"134567890"}}
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:6:in `create'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:6:in `create'
+  [1m[36mAccount Create (0.6ms)[0m  [1m[32mINSERT INTO "accounts" ("user_id", "account_number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 2], ["account_number", 134567890], ["created_at", "2023-08-03 06:26:20.505169"], ["updated_at", "2023-08-03 06:26:20.505169"]]
+  ↳ app/controllers/accounts_controller.rb:6:in `create'
+  [1m[35m (3.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:6:in `create'
+Completed 500 Internal Server Error in 6765ms (ActiveRecord: 15.3ms | Allocations: 139330)
+
+
+  
+NameError (undefined local variable or method `created' for #<AccountsController:0x00007f41ac0948a0>
+Did you mean?  create):
+  
+app/controllers/accounts_controller.rb:7:in `create'
+Started POST "/accounts" for ::1 at 2023-08-03 11:56:58 +0530
+Processing by AccountsController#create as */*
+  Parameters: {"user_id"=>2, "account_number"=>"134567890", "account"=>{"user_id"=>2, "account_number"=>"134567890"}}
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:6:in `create'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:6:in `create'
+  [1m[36mAccount Create (0.4ms)[0m  [1m[32mINSERT INTO "accounts" ("user_id", "account_number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 2], ["account_number", 134567890], ["created_at", "2023-08-03 06:27:02.914802"], ["updated_at", "2023-08-03 06:27:02.914802"]]
+  ↳ app/controllers/accounts_controller.rb:6:in `create'
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:6:in `create'
+Completed 201 Created in 4055ms (Views: 1.1ms | ActiveRecord: 13.5ms | Allocations: 14358)
+
+
+DEPRECATION WARNING: Using `bin/rake routes` is deprecated and will be removed in Rails 6.1. Use `bin/rails routes` instead.
+ (called from load at /usr/share/rvm/gems/ruby-2.5.8/bin/rake:25)
+Started POST "/users/deposite?deposite=1000" for ::1 at 2023-08-03 12:24:05 +0530
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+AbstractController::ActionNotFound (The action 'deposite' could not be found for UsersController):
+  
+actionpack (6.0.6.1) lib/abstract_controller/base.rb:131:in `process'
+actionpack (6.0.6.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.6.1) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.6.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.6.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.6.1) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.6.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.6.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.6.1) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.2.8) lib/rack/etag.rb:27:in `call'
+rack (2.2.8) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.8) lib/rack/head.rb:12:in `call'
+activerecord (6.0.6.1) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.6.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.8) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.8) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/host_authorization.rb:103:in `call'
+railties (6.0.6.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.12) lib/puma/configuration.rb:228:in `call'
+puma (4.3.12) lib/puma/server.rb:727:in `handle_request'
+puma (4.3.12) lib/puma/server.rb:476:in `process_client'
+puma (4.3.12) lib/puma/server.rb:332:in `block in run'
+puma (4.3.12) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+DEPRECATION WARNING: Using `bin/rake routes` is deprecated and will be removed in Rails 6.1. Use `bin/rails routes` instead.
+ (called from load at /usr/share/rvm/gems/ruby-2.5.8/bin/rake:25)
+Started POST "/users/deposite?deposite=10000" for ::1 at 2023-08-03 12:27:47 +0530
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+AbstractController::ActionNotFound (The action 'deposite' could not be found for UsersController):
+  
+actionpack (6.0.6.1) lib/abstract_controller/base.rb:131:in `process'
+actionpack (6.0.6.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.6.1) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.6.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.6.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.6.1) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.6.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.6.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.6.1) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.2.8) lib/rack/etag.rb:27:in `call'
+rack (2.2.8) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.8) lib/rack/head.rb:12:in `call'
+activerecord (6.0.6.1) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.6.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.8) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.8) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/host_authorization.rb:103:in `call'
+railties (6.0.6.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.12) lib/puma/configuration.rb:228:in `call'
+puma (4.3.12) lib/puma/server.rb:727:in `handle_request'
+puma (4.3.12) lib/puma/server.rb:476:in `process_client'
+puma (4.3.12) lib/puma/server.rb:332:in `block in run'
+puma (4.3.12) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/users/deposite?deposite=10000" for ::1 at 2023-08-03 12:32:46 +0530
+  
+AbstractController::ActionNotFound (The action 'deposite' could not be found for UsersController):
+  
+actionpack (6.0.6.1) lib/abstract_controller/base.rb:131:in `process'
+actionpack (6.0.6.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.6.1) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.6.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.6.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.6.1) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.6.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.6.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.6.1) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.2.8) lib/rack/etag.rb:27:in `call'
+rack (2.2.8) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.8) lib/rack/head.rb:12:in `call'
+activerecord (6.0.6.1) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.6.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.8) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.8) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/host_authorization.rb:103:in `call'
+railties (6.0.6.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.12) lib/puma/configuration.rb:228:in `call'
+puma (4.3.12) lib/puma/server.rb:727:in `handle_request'
+puma (4.3.12) lib/puma/server.rb:476:in `process_client'
+puma (4.3.12) lib/puma/server.rb:332:in `block in run'
+puma (4.3.12) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/users/deposite?deposite=10000" for ::1 at 2023-08-03 12:32:48 +0530
+  
+AbstractController::ActionNotFound (The action 'deposite' could not be found for UsersController):
+  
+actionpack (6.0.6.1) lib/abstract_controller/base.rb:131:in `process'
+actionpack (6.0.6.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.6.1) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.6.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.6.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.6.1) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.6.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.6.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.6.1) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.2.8) lib/rack/etag.rb:27:in `call'
+rack (2.2.8) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.8) lib/rack/head.rb:12:in `call'
+activerecord (6.0.6.1) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.6.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.8) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.8) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/host_authorization.rb:103:in `call'
+railties (6.0.6.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.12) lib/puma/configuration.rb:228:in `call'
+puma (4.3.12) lib/puma/server.rb:727:in `handle_request'
+puma (4.3.12) lib/puma/server.rb:476:in `process_client'
+puma (4.3.12) lib/puma/server.rb:332:in `block in run'
+puma (4.3.12) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/users/deposite?deposite=10000" for ::1 at 2023-08-03 12:32:49 +0530
+  
+AbstractController::ActionNotFound (The action 'deposite' could not be found for UsersController):
+  
+actionpack (6.0.6.1) lib/abstract_controller/base.rb:131:in `process'
+actionpack (6.0.6.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.6.1) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.6.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.6.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.6.1) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.6.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.6.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.6.1) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.2.8) lib/rack/etag.rb:27:in `call'
+rack (2.2.8) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.8) lib/rack/head.rb:12:in `call'
+activerecord (6.0.6.1) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.6.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.8) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.8) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/host_authorization.rb:103:in `call'
+railties (6.0.6.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.12) lib/puma/configuration.rb:228:in `call'
+puma (4.3.12) lib/puma/server.rb:727:in `handle_request'
+puma (4.3.12) lib/puma/server.rb:476:in `process_client'
+puma (4.3.12) lib/puma/server.rb:332:in `block in run'
+puma (4.3.12) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/users/deposite?deposite=10000" for ::1 at 2023-08-03 12:33:15 +0530
+  
+AbstractController::ActionNotFound (The action 'deposite' could not be found for UsersController):
+  
+actionpack (6.0.6.1) lib/abstract_controller/base.rb:131:in `process'
+actionpack (6.0.6.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.6.1) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.6.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.6.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.6.1) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.6.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.6.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.6.1) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.2.8) lib/rack/etag.rb:27:in `call'
+rack (2.2.8) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.8) lib/rack/head.rb:12:in `call'
+activerecord (6.0.6.1) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.6.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.8) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.8) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/host_authorization.rb:103:in `call'
+railties (6.0.6.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.12) lib/puma/configuration.rb:228:in `call'
+puma (4.3.12) lib/puma/server.rb:727:in `handle_request'
+puma (4.3.12) lib/puma/server.rb:476:in `process_client'
+puma (4.3.12) lib/puma/server.rb:332:in `block in run'
+puma (4.3.12) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/users/deposite?deposite=10000" for ::1 at 2023-08-03 12:33:57 +0530
+  
+AbstractController::ActionNotFound (The action 'deposite' could not be found for UsersController):
+  
+actionpack (6.0.6.1) lib/abstract_controller/base.rb:131:in `process'
+actionpack (6.0.6.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.6.1) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.6.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.6.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.6.1) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.6.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.6.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.6.1) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.2.8) lib/rack/etag.rb:27:in `call'
+rack (2.2.8) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.8) lib/rack/head.rb:12:in `call'
+activerecord (6.0.6.1) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.6.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.8) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.8) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/host_authorization.rb:103:in `call'
+railties (6.0.6.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.12) lib/puma/configuration.rb:228:in `call'
+puma (4.3.12) lib/puma/server.rb:727:in `handle_request'
+puma (4.3.12) lib/puma/server.rb:476:in `process_client'
+puma (4.3.12) lib/puma/server.rb:332:in `block in run'
+puma (4.3.12) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/users/deposite?deposite=10000" for ::1 at 2023-08-03 12:36:19 +0530
+  
+ActionController::RoutingError (No route matches [POST] "/users/deposite"):
+  
+actionpack (6.0.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.6.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.8) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.8) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/host_authorization.rb:103:in `call'
+railties (6.0.6.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.12) lib/puma/configuration.rb:228:in `call'
+puma (4.3.12) lib/puma/server.rb:727:in `handle_request'
+puma (4.3.12) lib/puma/server.rb:476:in `process_client'
+puma (4.3.12) lib/puma/server.rb:332:in `block in run'
+puma (4.3.12) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+DEPRECATION WARNING: Using `bin/rake routes` is deprecated and will be removed in Rails 6.1. Use `bin/rails routes` instead.
+ (called from load at /usr/share/rvm/gems/ruby-2.5.8/bin/rake:25)
+Started POST "/deposite?deposite=10000" for ::1 at 2023-08-03 12:37:26 +0530
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+AbstractController::ActionNotFound (The action 'deposite' could not be found for UsersController):
+  
+actionpack (6.0.6.1) lib/abstract_controller/base.rb:131:in `process'
+actionpack (6.0.6.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.6.1) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.6.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.6.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.6.1) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.6.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.6.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.6.1) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.2.8) lib/rack/etag.rb:27:in `call'
+rack (2.2.8) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.8) lib/rack/head.rb:12:in `call'
+activerecord (6.0.6.1) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.6.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.8) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.8) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/host_authorization.rb:103:in `call'
+railties (6.0.6.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.12) lib/puma/configuration.rb:228:in `call'
+puma (4.3.12) lib/puma/server.rb:727:in `handle_request'
+puma (4.3.12) lib/puma/server.rb:476:in `process_client'
+puma (4.3.12) lib/puma/server.rb:332:in `block in run'
+puma (4.3.12) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/deposite?deposite=10000" for ::1 at 2023-08-03 12:58:22 +0530
+Processing by UsersController#deposite as */*
+  Parameters: {"deposite"=>"10000"}
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms | Allocations: 94)
+
+
+Started POST "/deposite?deposite=10000" for ::1 at 2023-08-03 12:58:34 +0530
+Processing by UsersController#deposite as */*
+  Parameters: {"deposite"=>"10000"}
+Completed 500 Internal Server Error in 3308145ms (ActiveRecord: 0.0ms | Allocations: 123407)
+
+
+  
+NameError (undefined local variable or method `amount' for #<UsersController:0x0000555f284bb798>):
+  
+app/controllers/users_controller.rb:17:in `deposite'
+Started POST "/deposite?deposite=10000" for ::1 at 2023-08-03 13:55:57 +0530
+  
+SyntaxError (/home/ankush/bankingproject/app/controllers/users_controller.rb:36: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/controllers/users_controller.rb:36: syntax error, unexpected end-of-input, expecting keyword_end
+app/controllers/users_controller.rb:36: syntax error, unexpected end-of-input, expecting keyword_end
+Started POST "/deposite?deposite=10000" for ::1 at 2023-08-03 13:56:18 +0530
+Processing by UsersController#deposite as */*
+  Parameters: {"deposite"=>"10000"}
+Started POST "/deposite?deposite=10000&user_id=2" for ::1 at 2023-08-03 13:56:47 +0530
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `deposite'
+Completed 500 Internal Server Error in 29405ms (ActiveRecord: 6.3ms | Allocations: 49788)
+
+
+  
+NoMethodError (undefined method `message' for #<UsersController:0x00007f55a0f2e750>):
+  
+app/controllers/users_controller.rb:22:in `deposite'
+Processing by UsersController#deposite as */*
+  Parameters: {"deposite"=>"10000", "user_id"=>"2"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ (byebug):1:in `deposite'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `deposite'
+Completed 500 Internal Server Error in 47217ms (ActiveRecord: 5.5ms | Allocations: 46567)
+
+
+  
+NoMethodError (undefined method `message' for #<UsersController:0x0000555f29b38e08>):
+  
+app/controllers/users_controller.rb:22:in `deposite'
+Started POST "/deposite?deposite=10000&user_id=2" for ::1 at 2023-08-03 13:57:39 +0530
+Processing by UsersController#deposite as */*
+  Parameters: {"deposite"=>"10000", "user_id"=>"2"}
+Completed 500 Internal Server Error in 33562ms (ActiveRecord: 0.0ms | Allocations: 386149)
+
+
+  
+NameError (undefined local variable or method `user_id' for #<UsersController:0x00007f55a0f3a1b8>
+Did you mean?  user_url):
+  
+app/controllers/users_controller.rb:17:in `deposite'
+Started POST "/deposite?deposite=10000&user_id=2" for ::1 at 2023-08-03 13:58:17 +0530
+Processing by UsersController#deposite as */*
+  Parameters: {"deposite"=>"10000", "user_id"=>"2"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ (byebug):1:in `deposite'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Started POST "/deposite?deposite=10000&user_id=2" for ::1 at 2023-08-03 14:00:11 +0530
+  ↳ app/controllers/users_controller.rb:17:in `deposite'
+Completed 500 Internal Server Error in 114106ms (ActiveRecord: 10.5ms | Allocations: 87288)
+
+
+  
+NameError (undefined local variable or method `amount' for #<UsersController:0x00007f559f617f78>):
+  
+app/controllers/users_controller.rb:19:in `deposite'
+Processing by UsersController#deposite as */*
+  Parameters: {"deposite"=>"10000", "user_id"=>"2"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ (byebug):1:in `deposite'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `deposite'
+Completed 500 Internal Server Error in 95986ms (ActiveRecord: 10.7ms | Allocations: 16618)
+
+
+  
+TypeError (String can't be coerced into Integer):
+  
+app/controllers/users_controller.rb:20:in `+'
+app/controllers/users_controller.rb:20:in `deposite'
+Started POST "/deposite?deposite=10000&user_id=2" for ::1 at 2023-08-03 14:01:51 +0530
+Processing by UsersController#deposite as */*
+  Parameters: {"deposite"=>"10000", "user_id"=>"2"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ (byebug):1:in `deposite'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `deposite'
+Completed 500 Internal Server Error in 62468ms (Views: 0.5ms | ActiveRecord: 11.9ms | Allocations: 14393)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  
+app/controllers/users_controller.rb:21:in `deposite'
+Started POST "/deposite?deposite=10000&user_id=2" for ::1 at 2023-08-03 14:03:40 +0530
+Processing by UsersController#deposite as */*
+  Parameters: {"deposite"=>"10000", "user_id"=>"2"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `deposite'
+Completed 200 OK in 3245ms (Views: 0.3ms | ActiveRecord: 8.3ms | Allocations: 8647)
+
+
+Started POST "/deposite?deposite=10000&user_id=2" for ::1 at 2023-08-03 14:04:31 +0530
+Processing by UsersController#deposite as */*
+  Parameters: {"deposite"=>"10000", "user_id"=>"2"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `deposite'
+Completed 200 OK in 2439ms (Views: 0.3ms | ActiveRecord: 10.9ms | Allocations: 8598)
+
+
+Started POST "/deposite?deposite=10000&user_id=2" for ::1 at 2023-08-03 14:04:56 +0530
+Processing by UsersController#deposite as */*
+  Parameters: {"deposite"=>"10000", "user_id"=>"2"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `deposite'
+Completed 200 OK in 3011ms (Views: 0.5ms | ActiveRecord: 11.7ms | Allocations: 8604)
+
+
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Started POST "/deposite?deposite=10000&user_id=2" for ::1 at 2023-08-03 14:24:10 +0530
+Processing by UsersController#deposite as */*
+  Parameters: {"deposite"=>"10000", "user_id"=>"2"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `deposite'
+Completed 500 Internal Server Error in 4823ms (ActiveRecord: 2.2ms | Allocations: 8587)
+
+
+  
+ArgumentError (When assigning attributes, you must pass a hash as an argument, Integer passed.):
+  
+app/controllers/users_controller.rb:21:in `deposite'
+Started POST "/deposite?deposite=10000&user_id=2" for ::1 at 2023-08-03 14:28:41 +0530
+Processing by UsersController#deposite as */*
+  Parameters: {"deposite"=>"10000", "user_id"=>"2"}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ (byebug):1:in `deposite'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `deposite'
+Started POST "/deposite?deposite=10000&user_id=2" for ::1 at 2023-08-03 14:34:40 +0530
+Completed 500 Internal Server Error in 358851ms (ActiveRecord: 15.7ms | Allocations: 24398)
+
+
+  
+ArgumentError (When assigning attributes, you must pass a hash as an argument, Integer passed.):
+  
+app/controllers/users_controller.rb:21:in `deposite'
+Processing by UsersController#deposite as */*
+  Parameters: {"deposite"=>"10000", "user_id"=>"2"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `deposite'
+Completed 200 OK in 1027ms (Views: 0.2ms | ActiveRecord: 11.7ms | Allocations: 8991)
+
+
+Started POST "/deposite?deposite=10000&user_id=2" for ::1 at 2023-08-03 14:41:17 +0530
+  
+SyntaxError (/home/ankush/bankingproject/app/controllers/users_controller.rb:47: syntax error, unexpected keyword_end, expecting end-of-input):
+  
+app/controllers/users_controller.rb:47: syntax error, unexpected keyword_end, expecting end-of-input
+app/controllers/users_controller.rb:47: syntax error, unexpected keyword_end, expecting end-of-input
+Started POST "/deposite?deposite=10000&user_id=2" for ::1 at 2023-08-03 14:41:54 +0530
+Processing by UsersController#deposite as */*
+  Parameters: {"deposite"=>"10000", "user_id"=>"2"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `deposite'
+Completed 500 Internal Server Error in 5866ms (ActiveRecord: 17.9ms | Allocations: 79795)
+
+
+  
+NameError (undefined local variable or method `d_amount' for #<UsersController:0x00007f559f3ed1f8>
+Did you mean?  @d_amount
+               @amount):
+  
+app/controllers/users_controller.rb:22:in `deposite'
+Started POST "/deposite?deposite=10000&user_id=2" for ::1 at 2023-08-03 14:43:04 +0530
+Processing by UsersController#deposite as */*
+  Parameters: {"deposite"=>"10000", "user_id"=>"2"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ (byebug):1:in `deposite'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `deposite'
+Completed 500 Internal Server Error in 64848ms (ActiveRecord: 11.4ms | Allocations: 86831)
+
+
+  
+NameError (undefined local variable or method `d_amount' for #<UsersController:0x00007f559eeb6108>
+Did you mean?  @d_amount
+               @amount):
+  
+app/controllers/users_controller.rb:22:in `deposite'
+Started POST "/deposite?deposite=10000&user_id=2" for ::1 at 2023-08-03 14:44:14 +0530
+Processing by UsersController#deposite as */*
+  Parameters: {"deposite"=>"10000", "user_id"=>"2"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `deposite'
+Completed 200 OK in 3400ms (Views: 0.4ms | ActiveRecord: 12.6ms | Allocations: 9436)
+
+
+DEPRECATION WARNING: Using `bin/rake routes` is deprecated and will be removed in Rails 6.1. Use `bin/rails routes` instead.
+ (called from load at /usr/share/rvm/gems/ruby-2.5.8/bin/rake:25)
+Started POST "/withdraw" for ::1 at 2023-08-03 14:46:32 +0530
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#withdraw as */*
+Completed 500 Internal Server Error in 58585ms (ActiveRecord: 0.0ms | Allocations: 124840)
+
+
+  
+NameError (undefined local variable or method `param' for #<UsersController:0x0000564c80347718>
+Did you mean?  params
+               params=):
+  
+app/controllers/users_controller.rb:28:in `withdraw'
+Started POST "/withdraw?withdraw=5000&user_id=2" for ::1 at 2023-08-03 14:47:34 +0530
+Processing by UsersController#withdraw as */*
+  Parameters: {"withdraw"=>"5000", "user_id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ (byebug):1:in `withdraw'
+Completed 500 Internal Server Error in 68001ms (ActiveRecord: 4.1ms | Allocations: 418664)
+
+
+  
+NameError (undefined local variable or method `param' for #<UsersController:0x00007fe47423ae78>
+Did you mean?  params
+               params=
+               @_params):
+  
+app/controllers/users_controller.rb:28:in `withdraw'
+Started POST "/withdraw?withdraw=5000&user_id=2" for ::1 at 2023-08-03 14:48:48 +0530
+Processing by UsersController#withdraw as */*
+  Parameters: {"withdraw"=>"5000", "user_id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29:in `withdraw'
+Completed 200 OK in 2204ms (Views: 0.1ms | ActiveRecord: 4.0ms | Allocations: 9916)
+
+
+Started POST "/withdraw?withdraw=5000&user_id=2" for ::1 at 2023-08-03 14:49:44 +0530
+Processing by UsersController#withdraw as */*
+  Parameters: {"withdraw"=>"5000", "user_id"=>"2"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29:in `withdraw'
+Completed 200 OK in 3651ms (Views: 0.3ms | ActiveRecord: 11.6ms | Allocations: 9875)
+
+
+Started POST "/withdraw?withdraw=5000&user_id=2" for ::1 at 2023-08-03 14:51:53 +0530
+Processing by UsersController#withdraw as */*
+  Parameters: {"withdraw"=>"5000", "user_id"=>"2"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29:in `withdraw'
+Completed 500 Internal Server Error in 4082ms (ActiveRecord: 12.4ms | Allocations: 80396)
+
+
+  
+NameError (undefined local variable or method `withdraw_money' for #<UsersController:0x0000564c809df7d8>
+Did you mean?  @withdraw_money):
+  
+app/controllers/users_controller.rb:32:in `withdraw'
+Started POST "/withdraw?withdraw=5000&user_id=2" for ::1 at 2023-08-03 14:52:15 +0530
+Processing by UsersController#withdraw as */*
+  Parameters: {"withdraw"=>"5000", "user_id"=>"2"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ (byebug):1:in `withdraw'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29:in `withdraw'
+Completed 500 Internal Server Error in 77755ms (ActiveRecord: 8.2ms | Allocations: 23690)
+
+
+  
+ArgumentError (comparison of Integer with String failed):
+  
+app/controllers/users_controller.rb:32:in `>'
+app/controllers/users_controller.rb:32:in `withdraw'
+Started POST "/withdraw?withdraw=5000&user_id=2" for ::1 at 2023-08-03 14:53:37 +0530
+Processing by UsersController#withdraw as */*
+  Parameters: {"withdraw"=>"5000", "user_id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29:in `withdraw'
+Completed 200 OK in 3629ms (Views: 0.1ms | ActiveRecord: 4.5ms | Allocations: 10494)
+
+
+Started POST "/withdraw?withdraw=5000&user_id=2" for ::1 at 2023-08-03 14:54:23 +0530
+Processing by UsersController#withdraw as */*
+  Parameters: {"withdraw"=>"5000", "user_id"=>"2"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29:in `withdraw'
+Completed 200 OK in 3800ms (Views: 0.2ms | ActiveRecord: 9.9ms | Allocations: 10477)
+
+
+Started POST "/withdraw?withdraw=50000&user_id=2" for ::1 at 2023-08-03 14:54:40 +0530
+Processing by UsersController#withdraw as */*
+  Parameters: {"withdraw"=>"50000", "user_id"=>"2"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29:in `withdraw'
+Completed 200 OK in 2811ms (Views: 0.3ms | ActiveRecord: 1.1ms | Allocations: 5237)
+
+
+Started POST "/deposite?deposite=10000&user_id=2" for ::1 at 2023-08-03 15:04:47 +0530
+Processing by UsersController#deposite as */*
+  Parameters: {"deposite"=>"10000", "user_id"=>"2"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `deposite'
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:21:in `deposite'
+  [1m[36mUser Update (1.1ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 20000], ["updated_at", "2023-08-03 09:34:56.321224"], ["id", 2]]
+  ↳ app/controllers/users_controller.rb:21:in `deposite'
+  [1m[35m (12.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:21:in `deposite'
+Completed 200 OK in 8413ms (Views: 0.2ms | ActiveRecord: 16.7ms | Allocations: 13012)
+
+
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Started POST "/withdraw?withdraw=50000&user_id=2" for ::1 at 2023-08-03 15:07:09 +0530
+Processing by UsersController#withdraw as */*
+  Parameters: {"withdraw"=>"50000", "user_id"=>"2"}
+Started POST "/withdraw?withdraw=5000&user_id=2" for ::1 at 2023-08-03 15:07:25 +0530
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29:in `withdraw'
+Completed 200 OK in 15234ms (Views: 0.2ms | ActiveRecord: 13.9ms | Allocations: 11013)
+
+
+Processing by UsersController#withdraw as */*
+  Parameters: {"withdraw"=>"5000", "user_id"=>"2"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29:in `withdraw'
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:34:in `withdraw'
+  [1m[36mUser Update (1.0ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 15000], ["updated_at", "2023-08-03 09:37:27.914101"], ["id", 2]]
+  ↳ app/controllers/users_controller.rb:34:in `withdraw'
+  [1m[35m (6.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:34:in `withdraw'
+Completed 200 OK in 2737ms (Views: 0.4ms | ActiveRecord: 17.0ms | Allocations: 12917)
+
+
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Started POST "/deposite?deposite=10000&user_id=2" for ::1 at 2023-08-03 15:10:12 +0530
+  
+SyntaxError (/home/ankush/bankingproject/app/controllers/users_controller.rb:26: syntax error, unexpected tIDENTIFIER, expecting keyword_do or '{' or '('
+...          render json: you have entered wrong pin!!!!.
+...                           ^~~~
+/home/ankush/bankingproject/app/controllers/users_controller.rb:26: syntax error, unexpected '.'
+...you have entered wrong pin!!!!.
+...                              ^
+/home/ankush/bankingproject/app/controllers/users_controller.rb:54: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/controllers/users_controller.rb:26: syntax error, unexpected tIDENTIFIER, expecting keyword_do or '{' or '('
+app/controllers/users_controller.rb:26: syntax error, unexpected '.'
+app/controllers/users_controller.rb:54: syntax error, unexpected end-of-input, expecting keyword_end
+app/controllers/users_controller.rb:26: syntax error, unexpected tIDENTIFIER, expecting keyword_do or '{' or '('
+app/controllers/users_controller.rb:26: syntax error, unexpected '.'
+app/controllers/users_controller.rb:54: syntax error, unexpected end-of-input, expecting keyword_end
+Started POST "/deposite?deposite=10000&user_id=2" for ::1 at 2023-08-03 15:10:32 +0530
+Processing by UsersController#deposite as */*
+  Parameters: {"deposite"=>"10000", "user_id"=>"2"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `deposite'
+Completed 200 OK in 31954ms (Views: 0.4ms | ActiveRecord: 8.1ms | Allocations: 437851)
+
+
+Started POST "/deposite?deposite=10000&user_id=2&pin=1204" for ::1 at 2023-08-03 15:11:08 +0530
+Processing by UsersController#deposite as */*
+  Parameters: {"deposite"=>"10000", "user_id"=>"2", "pin"=>"1204"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `deposite'
+Completed 200 OK in 70351ms (Views: 0.7ms | ActiveRecord: 1.0ms | Allocations: 76861)
+
+
+Started POST "/deposite?deposite=10000&user_id=2&pin=1204" for ::1 at 2023-08-03 15:12:18 +0530
+Processing by UsersController#deposite as */*
+  Parameters: {"deposite"=>"10000", "user_id"=>"2", "pin"=>"1204"}
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `deposite'
+Completed 200 OK in 21409ms (Views: 0.5ms | ActiveRecord: 2.8ms | Allocations: 93584)
+
+
+Started POST "/deposite?deposite=10000&user_id=2&pin=1204" for ::1 at 2023-08-03 15:12:58 +0530
+Processing by UsersController#deposite as */*
+  Parameters: {"deposite"=>"10000", "user_id"=>"2", "pin"=>"1204"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ (byebug):1:in `deposite'
+  [1m[36mCACHE User Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `deposite'
+  [1m[35m (1.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ (byebug):1:in `deposite'
+  [1m[36mUser Update (1.0ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 25000], ["updated_at", "2023-08-03 09:44:02.801993"], ["id", 2]]
+  ↳ (byebug):1:in `deposite'
+  [1m[35m (11.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ (byebug):1:in `deposite'
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:23:in `deposite'
+  [1m[36mUser Update (0.8ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 35000], ["updated_at", "2023-08-03 09:44:10.798579"], ["id", 2]]
+  ↳ app/controllers/users_controller.rb:23:in `deposite'
+  [1m[35m (6.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:23:in `deposite'
+Completed 200 OK in 71893ms (Views: 0.3ms | ActiveRecord: 31.9ms | Allocations: 113909)
+
+
+Started POST "/deposite?deposite=10000&user_id=2&pin=1204" for ::1 at 2023-08-03 15:14:34 +0530
+Processing by UsersController#deposite as */*
+  Parameters: {"deposite"=>"10000", "user_id"=>"2", "pin"=>"1204"}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `deposite'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:23:in `deposite'
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 45000], ["updated_at", "2023-08-03 09:44:37.188874"], ["id", 2]]
+  ↳ app/controllers/users_controller.rb:23:in `deposite'
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:23:in `deposite'
+Completed 200 OK in 2594ms (Views: 0.2ms | ActiveRecord: 8.6ms | Allocations: 9825)
+
+
+Started POST "/withdraw?withdraw=100&user_id=2&pin" for ::1 at 2023-08-03 16:46:18 +0530
+Processing by UsersController#withdraw as */*
+  Parameters: {"withdraw"=>"100", "user_id"=>"2", "pin"=>nil}
+Started POST "/withdraw?withdraw=100&user_id=2&pin=1204" for ::1 at 2023-08-03 16:46:42 +0530
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:34:in `withdraw'
+Completed 200 OK in 23617ms (Views: 0.2ms | ActiveRecord: 2.3ms | Allocations: 13962)
+
+
+Processing by UsersController#withdraw as */*
+  Parameters: {"withdraw"=>"100", "user_id"=>"2", "pin"=>"1204"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ (byebug):1:in `withdraw'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:34:in `withdraw'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:41:in `withdraw'
+  [1m[36mUser Update (1.8ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 44900], ["updated_at", "2023-08-03 11:19:30.769580"], ["id", 2]]
+  ↳ app/controllers/users_controller.rb:41:in `withdraw'
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:41:in `withdraw'
+Completed 200 OK in 168268ms (Views: 0.2ms | ActiveRecord: 15.4ms | Allocations: 23358)
+
+
+Started POST "/withdraw?withdraw=100&user_id=2&pin=1204" for ::1 at 2023-08-03 16:49:35 +0530
+Processing by UsersController#withdraw as */*
+  Parameters: {"withdraw"=>"100", "user_id"=>"2", "pin"=>"1204"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ (byebug):1:in `withdraw'
+  [1m[36mCACHE User Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:34:in `withdraw'
+  [1m[35m (1.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ (byebug):1:in `withdraw'
+  [1m[36mUser Update (0.9ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 44800], ["updated_at", "2023-08-03 11:21:00.560604"], ["id", 2]]
+  ↳ (byebug):1:in `withdraw'
+  [1m[35m (3.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ (byebug):1:in `withdraw'
+Completed 200 OK in 93737ms (Views: 0.2ms | ActiveRecord: 17.8ms | Allocations: 116646)
+
+
+Started POST "/withdraw?withdraw=100&user_id=2&pin=1342" for ::1 at 2023-08-03 16:51:26 +0530
+Processing by UsersController#withdraw as */*
+  Parameters: {"withdraw"=>"100", "user_id"=>"2", "pin"=>"1342"}
+  [1m[36mUser Load (5.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ (byebug):1:in `withdraw'
+  [1m[36mCACHE User Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:34:in `withdraw'
+Completed 200 OK in 36222ms (Views: 0.4ms | ActiveRecord: 5.6ms | Allocations: 76646)
+
+
+Started POST "/withdraw?withdraw=100000&user_id=2&pin=1204" for ::1 at 2023-08-03 16:52:33 +0530
+Processing by UsersController#withdraw as */*
+  Parameters: {"withdraw"=>"100000", "user_id"=>"2", "pin"=>"1204"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ (byebug):1:in `withdraw'
+  [1m[36mCACHE User Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:34:in `withdraw'
+Completed 200 OK in 84733ms (Views: 0.7ms | ActiveRecord: 1.7ms | Allocations: 105734)
+
+
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+DEPRECATION WARNING: Using `bin/rake routes` is deprecated and will be removed in Rails 6.1. Use `bin/rails routes` instead.
+ (called from load at /usr/share/rvm/gems/ruby-2.5.8/bin/rake:25)
+Started GET "/transfer?transfer_money=1000&pin=1204" for ::1 at 2023-08-03 17:21:27 +0530
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/transfer"):
+  
+actionpack (6.0.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.6.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.8) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.8) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/host_authorization.rb:103:in `call'
+railties (6.0.6.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.12) lib/puma/configuration.rb:228:in `call'
+puma (4.3.12) lib/puma/server.rb:727:in `handle_request'
+puma (4.3.12) lib/puma/server.rb:476:in `process_client'
+puma (4.3.12) lib/puma/server.rb:332:in `block in run'
+puma (4.3.12) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/transfer?transfer_money=1000&pin=1204" for ::1 at 2023-08-03 17:21:35 +0530
+Processing by UsersController#transfer as */*
+  Parameters: {"transfer_money"=>"1000", "pin"=>"1204"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ (byebug):1:in `transfer'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ (byebug):1:in `transfer'
+  [1m[36mCACHE User Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:55:in `transfer'
+  [1m[36mCACHE User Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:56:in `transfer'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ (byebug):1:in `transfer'
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 43800], ["updated_at", "2023-08-03 11:55:48.156234"], ["id", 2]]
+  ↳ (byebug):1:in `transfer'
+  [1m[35m (7.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ (byebug):1:in `transfer'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ (byebug):1:in `transfer'
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 53800], ["updated_at", "2023-08-03 11:55:58.726220"], ["id", 1]]
+  ↳ (byebug):1:in `transfer'
+  [1m[35m (7.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ (byebug):1:in `transfer'
+Completed 500 Internal Server Error in 265391ms (ActiveRecord: 28.2ms | Allocations: 1061567)
+
+
+  
+ArgumentError (comparison of String with nil failed):
+  
+app/controllers/users_controller.rb:62:in `<='
+app/controllers/users_controller.rb:62:in `transfer'
+Started POST "/transfer?transfer_money=1000&pin=1204" for ::1 at 2023-08-03 17:26:15 +0530
+Processing by UsersController#transfer as */*
+  Parameters: {"transfer_money"=>"1000", "pin"=>"1204"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:55:in `transfer'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:56:in `transfer'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:65:in `transfer'
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 42800], ["updated_at", "2023-08-03 11:56:20.353068"], ["id", 2]]
+  ↳ app/controllers/users_controller.rb:65:in `transfer'
+  [1m[35m (6.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:65:in `transfer'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 96600], ["updated_at", "2023-08-03 11:56:20.363880"], ["id", 1]]
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+  [1m[35m (6.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+Completed 204 No Content in 5059ms (ActiveRecord: 20.5ms | Allocations: 29492)
+
+
+Started POST "/transfer?transfer_money=1000&pin=1204" for ::1 at 2023-08-03 17:27:49 +0530
+  
+SyntaxError (/home/ankush/bankingproject/app/controllers/users_controller.rb:69: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+...              render json: "you can not transfer money!!!!"
+...                            ^~~
+/home/ankush/bankingproject/app/controllers/users_controller.rb:69: syntax error, unexpected tIDENTIFIER, expecting '('
+...der json: "you can not transfer money!!!!"
+...                       ^~~~~~~~
+/home/ankush/bankingproject/app/controllers/users_controller.rb:72: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+...              render json: "you have entered wrong pin!!!!"
+...                            ^~~
+/home/ankush/bankingproject/app/controllers/users_controller.rb:100: unterminated string meets end of file
+/home/ankush/bankingproject/app/controllers/users_controller.rb:100: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/controllers/users_controller.rb:69: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+app/controllers/users_controller.rb:69: syntax error, unexpected tIDENTIFIER, expecting '('
+app/controllers/users_controller.rb:72: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+app/controllers/users_controller.rb:100: unterminated string meets end of file
+app/controllers/users_controller.rb:100: syntax error, unexpected end-of-input, expecting keyword_end
+app/controllers/users_controller.rb:69: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+app/controllers/users_controller.rb:69: syntax error, unexpected tIDENTIFIER, expecting '('
+app/controllers/users_controller.rb:72: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+app/controllers/users_controller.rb:100: unterminated string meets end of file
+app/controllers/users_controller.rb:100: syntax error, unexpected end-of-input, expecting keyword_end
+Started POST "/transfer?transfer_money=1000&pin=1204" for ::1 at 2023-08-03 17:28:19 +0530
+Processing by UsersController#transfer as */*
+  Parameters: {"transfer_money"=>"1000", "pin"=>"1204"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:55:in `transfer'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:56:in `transfer'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:65:in `transfer'
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 41800], ["updated_at", "2023-08-03 11:58:22.295149"], ["id", 2]]
+  ↳ app/controllers/users_controller.rb:65:in `transfer'
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:65:in `transfer'
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+  [1m[36mUser Update (0.8ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 138400], ["updated_at", "2023-08-03 11:58:22.307774"], ["id", 1]]
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+Completed 200 OK in 2971ms (Views: 0.2ms | ActiveRecord: 23.3ms | Allocations: 29556)
+
+
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+Started POST "/transfer?transfer_money=35000&pin=1204" for ::1 at 2023-08-03 17:30:09 +0530
+Processing by UsersController#transfer as */*
+  Parameters: {"transfer_money"=>"35000", "pin"=>"1204"}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:55:in `transfer'
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:56:in `transfer'
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:65:in `transfer'
+  [1m[36mUser Update (1.4ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 6800], ["updated_at", "2023-08-03 12:00:14.541222"], ["id", 2]]
+  ↳ app/controllers/users_controller.rb:65:in `transfer'
+  [1m[35m (6.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:65:in `transfer'
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+  [1m[36mUser Update (1.2ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 145200], ["updated_at", "2023-08-03 12:00:14.567219"], ["id", 1]]
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+  [1m[35m (6.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+Completed 200 OK in 5561ms (Views: 0.2ms | ActiveRecord: 20.0ms | Allocations: 21371)
+
+
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+Started POST "/transfer?transfer_money=35000&pin=1204" for ::1 at 2023-08-03 17:33:13 +0530
+Processing by UsersController#transfer as */*
+  Parameters: {"transfer_money"=>"35000", "pin"=>"1204"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:55:in `transfer'
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:56:in `transfer'
+Completed 200 OK in 9636ms (Views: 0.2ms | ActiveRecord: 10.2ms | Allocations: 21764)
+
+
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+Started POST "/transfer?transfer_money=35000&pin=1204" for ::1 at 2023-08-03 17:34:42 +0530
+Processing by UsersController#transfer as */*
+  Parameters: {"transfer_money"=>"35000", "pin"=>"1204"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:55:in `transfer'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:56:in `transfer'
+Completed 200 OK in 4472ms (Views: 0.1ms | ActiveRecord: 13.9ms | Allocations: 21727)
+
+
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+Started POST "/transfer?transfer_money=3500&pin=1204" for ::1 at 2023-08-03 17:35:14 +0530
+Processing by UsersController#transfer as */*
+  Parameters: {"transfer_money"=>"3500", "pin"=>"1204"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:55:in `transfer'
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:56:in `transfer'
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:65:in `transfer'
+  [1m[36mUser Update (1.4ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 3300], ["updated_at", "2023-08-03 12:05:19.793030"], ["id", 2]]
+  ↳ app/controllers/users_controller.rb:65:in `transfer'
+  [1m[35m (6.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:65:in `transfer'
+  [1m[35m (1.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+  [1m[36mUser Update (1.7ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 148500], ["updated_at", "2023-08-03 12:05:19.817177"], ["id", 1]]
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+  [1m[35m (6.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+Completed 200 OK in 5354ms (Views: 0.4ms | ActiveRecord: 20.4ms | Allocations: 21400)
+
+
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+Started POST "/transfer?transfer_money=3500&pin=1204" for ::1 at 2023-08-03 17:36:22 +0530
+Processing by UsersController#transfer as */*
+  Parameters: {"transfer_money"=>"3500", "pin"=>"1204"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:55:in `transfer'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:56:in `transfer'
+Completed 200 OK in 4921ms (Views: 0.2ms | ActiveRecord: 12.4ms | Allocations: 21761)
+
+
+Started POST "/transfer?transfer_money=350&pin=1204" for ::1 at 2023-08-03 17:36:39 +0530
+Processing by UsersController#transfer as */*
+  Parameters: {"transfer_money"=>"350", "pin"=>"1204"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:55:in `transfer'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:56:in `transfer'
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:65:in `transfer'
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 2950], ["updated_at", "2023-08-03 12:06:39.674551"], ["id", 2]]
+  ↳ app/controllers/users_controller.rb:65:in `transfer'
+  [1m[35m (6.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:65:in `transfer'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+  [1m[36mUser Update (1.1ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 151450], ["updated_at", "2023-08-03 12:06:39.687130"], ["id", 1]]
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+  [1m[35m (5.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+Completed 200 OK in 44ms (Views: 0.2ms | ActiveRecord: 15.6ms | Allocations: 21339)
+
+
+Started POST "/transfer?transfer_money=350&pin=1204" for ::1 at 2023-08-03 17:36:47 +0530
+Processing by UsersController#transfer as */*
+  Parameters: {"transfer_money"=>"350", "pin"=>"1204"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:55:in `transfer'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:56:in `transfer'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:65:in `transfer'
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 2600], ["updated_at", "2023-08-03 12:06:47.818906"], ["id", 2]]
+  ↳ app/controllers/users_controller.rb:65:in `transfer'
+  [1m[35m (5.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:65:in `transfer'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 154050], ["updated_at", "2023-08-03 12:06:47.831635"], ["id", 1]]
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+  [1m[35m (6.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+Completed 200 OK in 37ms (Views: 0.3ms | ActiveRecord: 14.4ms | Allocations: 21312)
+
+
+Started POST "/transfer?transfer_money=350&pin=1204" for ::1 at 2023-08-03 17:36:49 +0530
+Processing by UsersController#transfer as */*
+  Parameters: {"transfer_money"=>"350", "pin"=>"1204"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:55:in `transfer'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:56:in `transfer'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:65:in `transfer'
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 2250], ["updated_at", "2023-08-03 12:06:49.312980"], ["id", 2]]
+  ↳ app/controllers/users_controller.rb:65:in `transfer'
+  [1m[35m (5.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:65:in `transfer'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+  [1m[36mUser Update (0.9ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 156300], ["updated_at", "2023-08-03 12:06:49.324579"], ["id", 1]]
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+  [1m[35m (6.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+Completed 200 OK in 39ms (Views: 0.3ms | ActiveRecord: 14.5ms | Allocations: 21315)
+
+
+Started POST "/transfer?transfer_money=350&pin=1204" for ::1 at 2023-08-03 17:37:09 +0530
+Processing by UsersController#transfer as */*
+  Parameters: {"transfer_money"=>"350", "pin"=>"1204"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:55:in `transfer'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:56:in `transfer'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:65:in `transfer'
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 1900], ["updated_at", "2023-08-03 12:07:09.799106"], ["id", 2]]
+  ↳ app/controllers/users_controller.rb:65:in `transfer'
+  [1m[35m (5.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:65:in `transfer'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 158200], ["updated_at", "2023-08-03 12:07:09.809465"], ["id", 1]]
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+Completed 200 OK in 44ms (Views: 0.2ms | ActiveRecord: 16.7ms | Allocations: 26530)
+
+
+Started POST "/transfer?transfer_money=350&pin=1204" for ::1 at 2023-08-03 17:37:11 +0530
+Processing by UsersController#transfer as */*
+  Parameters: {"transfer_money"=>"350", "pin"=>"1204"}
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:55:in `transfer'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:56:in `transfer'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:65:in `transfer'
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 1550], ["updated_at", "2023-08-03 12:07:11.216683"], ["id", 2]]
+  ↳ app/controllers/users_controller.rb:65:in `transfer'
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:65:in `transfer'
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 159750], ["updated_at", "2023-08-03 12:07:11.228724"], ["id", 1]]
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+  [1m[35m (6.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+Completed 200 OK in 46ms (Views: 0.1ms | ActiveRecord: 16.8ms | Allocations: 21312)
+
+
+Started POST "/transfer?transfer_money=350&pin=1204" for ::1 at 2023-08-03 17:37:21 +0530
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#transfer as */*
+  Parameters: {"transfer_money"=>"350", "pin"=>"1204"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ (byebug):1:in `transfer'
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ (byebug):1:in `transfer'
+  [1m[36mCACHE User Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:55:in `transfer'
+  [1m[36mCACHE User Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:56:in `transfer'
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ (byebug):1:in `transfer'
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 1200], ["updated_at", "2023-08-03 12:11:26.260265"], ["id", 2]]
+  ↳ (byebug):1:in `transfer'
+  [1m[35m (7.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ (byebug):1:in `transfer'
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ (byebug):1:in `transfer'
+  [1m[36mUser Update (1.0ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", nil], ["updated_at", "2023-08-03 12:11:39.557112"], ["id", 1]]
+  ↳ (byebug):1:in `transfer'
+  [1m[35m (8.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ (byebug):1:in `transfer'
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+  [1m[36mUser Update (0.8ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 160950], ["updated_at", "2023-08-03 12:11:43.624603"], ["id", 1]]
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+Completed 200 OK in 262125ms (Views: 0.4ms | ActiveRecord: 40.7ms | Allocations: 505259)
+
+
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+Started POST "/users" for ::1 at 2023-08-03 17:50:13 +0530
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"veshali", "amount"=>10000, "pin"=>1980, "user"=>{"name"=>"veshali", "amount"=>10000, "pin"=>1980}}
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:7:in `create'
+  [1m[36mUser Create (1.1ms)[0m  [1m[32mINSERT INTO "users" ("name", "amount", "pin", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "veshali"], ["amount", 10000], ["pin", 1980], ["created_at", "2023-08-03 12:20:18.586785"], ["updated_at", "2023-08-03 12:20:18.586785"]]
+  ↳ app/controllers/users_controller.rb:7:in `create'
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:7:in `create'
+Completed 200 OK in 5421ms (Views: 0.8ms | ActiveRecord: 14.3ms | Allocations: 76630)
+
+
+Started POST "/users" for ::1 at 2023-08-03 17:50:36 +0530
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"ankush", "amount"=>10000, "pin"=>1964, "user"=>{"name"=>"ankush", "amount"=>10000, "pin"=>1964}}
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:7:in `create'
+  [1m[36mUser Create (1.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "amount", "pin", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "ankush"], ["amount", 10000], ["pin", 1964], ["created_at", "2023-08-03 12:20:44.064460"], ["updated_at", "2023-08-03 12:20:44.064460"]]
+  ↳ app/controllers/users_controller.rb:7:in `create'
+  [1m[35m (6.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:7:in `create'
+Completed 200 OK in 7327ms (Views: 0.8ms | ActiveRecord: 8.9ms | Allocations: 22274)
+
+
+Started POST "/transfer?transfer_money=100&pin=1204&user_id=3&id=4" for ::1 at 2023-08-03 17:51:06 +0530
+Processing by UsersController#transfer as */*
+  Parameters: {"transfer_money"=>"100", "pin"=>"1204", "user_id"=>"3", "id"=>"4"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ (byebug):1:in `transfer'
+  [1m[36mUser Load (3.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ (byebug):1:in `transfer'
+  [1m[36mCACHE User Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:55:in `transfer'
+Completed 500 Internal Server Error in 112374ms (ActiveRecord: 4.8ms | Allocations: 147218)
+
+
+  
+ActiveRecord::StatementInvalid (PG::UndefinedColumn: ERROR:  column users.user_id does not exist
+LINE 1: SELECT "users".* FROM "users" WHERE "users"."user_id" = $1 L...
+                                            ^
+):
+  
+app/controllers/users_controller.rb:56:in `transfer'
+Started POST "/transfer?transfer_money=100&pin=1964&user_id=3&id=4" for ::1 at 2023-08-03 17:53:02 +0530
+Processing by UsersController#transfer as */*
+  Parameters: {"transfer_money"=>"100", "pin"=>"1964", "user_id"=>"3", "id"=>"4"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ (byebug):1:in `transfer'
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ (byebug):1:in `transfer'
+  [1m[36mCACHE User Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:55:in `transfer'
+Completed 500 Internal Server Error in 80991ms (ActiveRecord: 3.6ms | Allocations: 144416)
+
+
+  
+ActiveRecord::StatementInvalid (PG::UndefinedColumn: ERROR:  column users.user_id does not exist
+LINE 1: SELECT "users".* FROM "users" WHERE "users"."user_id" = $1 L...
+                                            ^
+):
+  
+app/controllers/users_controller.rb:56:in `transfer'
+Started POST "/transfer?transfer_money=100&pin=1980&user_id=3&id=4" for ::1 at 2023-08-03 17:54:37 +0530
+Processing by UsersController#transfer as */*
+  Parameters: {"transfer_money"=>"100", "pin"=>"1980", "user_id"=>"3", "id"=>"4"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ (byebug):1:in `transfer'
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ (byebug):1:in `transfer'
+  [1m[36mCACHE User Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:55:in `transfer'
+  [1m[36mCACHE User Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:56:in `transfer'
+  [1m[35m (1.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ (byebug):1:in `transfer'
+  [1m[36mUser Update (0.8ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 9900], ["updated_at", "2023-08-03 12:27:02.650416"], ["id", 3]]
+  ↳ (byebug):1:in `transfer'
+  [1m[35m (8.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ (byebug):1:in `transfer'
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+  [1m[36mUser Update (3.6ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 19900], ["updated_at", "2023-08-03 12:28:09.870595"], ["id", 4]]
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+  [1m[35m (6.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+Completed 200 OK in 212299ms (Views: 0.2ms | ActiveRecord: 33.4ms | Allocations: 318181)
+
+
+Started POST "/transfer?transfer_money=100&pin=1980&user_id=3&id=4" for ::1 at 2023-08-03 17:58:18 +0530
+Processing by UsersController#transfer as */*
+  Parameters: {"transfer_money"=>"100", "pin"=>"1980", "user_id"=>"3", "id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:55:in `transfer'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:56:in `transfer'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:64:in `transfer'
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 9800], ["updated_at", "2023-08-03 12:28:18.272093"], ["id", 3]]
+  ↳ app/controllers/users_controller.rb:64:in `transfer'
+  [1m[35m (7.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:64:in `transfer'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 29700], ["updated_at", "2023-08-03 12:28:18.284775"], ["id", 4]]
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+Completed 200 OK in 45ms (Views: 0.2ms | ActiveRecord: 18.9ms | Allocations: 11422)
+
+
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+Started POST "/transfer?transfer_money=1000&pin=1980&user_id=3&id=4" for ::1 at 2023-08-03 17:59:32 +0530
+Processing by UsersController#transfer as */*
+  Parameters: {"transfer_money"=>"1000", "pin"=>"1980", "user_id"=>"3", "id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:55:in `transfer'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:56:in `transfer'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:64:in `transfer'
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 8800], ["updated_at", "2023-08-03 12:29:32.944935"], ["id", 3]]
+  ↳ app/controllers/users_controller.rb:64:in `transfer'
+  [1m[35m (7.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:64:in `transfer'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 38500], ["updated_at", "2023-08-03 12:29:32.958988"], ["id", 4]]
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+  [1m[35m (6.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+Completed 200 OK in 30ms (Views: 0.2ms | ActiveRecord: 15.6ms | Allocations: 6101)
+
+
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+Started POST "/transfer?transfer_money=10&pin=1980&user_id=3&id=4" for ::1 at 2023-08-03 18:00:37 +0530
+Processing by UsersController#transfer as */*
+  Parameters: {"transfer_money"=>"10", "pin"=>"1980", "user_id"=>"3", "id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:55:in `transfer'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:56:in `transfer'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:64:in `transfer'
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 8790], ["updated_at", "2023-08-03 12:30:37.248583"], ["id", 3]]
+  ↳ app/controllers/users_controller.rb:64:in `transfer'
+  [1m[35m (7.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:64:in `transfer'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 47290], ["updated_at", "2023-08-03 12:30:37.261512"], ["id", 4]]
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+  [1m[35m (5.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+Completed 200 OK in 28ms (Views: 0.2ms | ActiveRecord: 15.7ms | Allocations: 6096)
+
+
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+Started POST "/users" for ::1 at 2023-08-03 20:09:39 +0530
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"kapil", "amount"=>100, "pin"=>1773, "user"=>{"name"=>"kapil", "amount"=>100, "pin"=>1773}}
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:7:in `create'
+  [1m[36mUser Create (1.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "amount", "pin", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "kapil"], ["amount", 100], ["pin", 1773], ["created_at", "2023-08-03 14:39:47.524280"], ["updated_at", "2023-08-03 14:39:47.524280"]]
+  ↳ app/controllers/users_controller.rb:7:in `create'
+  [1m[35m (6.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:7:in `create'
+Completed 200 OK in 8253ms (Views: 0.5ms | ActiveRecord: 8.7ms | Allocations: 34438)
+
+
+Started POST "/users" for ::1 at 2023-08-03 20:10:17 +0530
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"aayushi", "amount"=>0, "pin"=>1221, "user"=>{"name"=>"aayushi", "amount"=>0, "pin"=>1221}}
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:7:in `create'
+  [1m[36mUser Create (1.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "amount", "pin", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "aayushi"], ["amount", 0], ["pin", 1221], ["created_at", "2023-08-03 14:40:28.059164"], ["updated_at", "2023-08-03 14:40:28.059164"]]
+  ↳ app/controllers/users_controller.rb:7:in `create'
+  [1m[35m (6.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:7:in `create'
+Completed 200 OK in 10642ms (Views: 0.9ms | ActiveRecord: 9.2ms | Allocations: 30554)
+
+
+Started POST "/transfer?transfer_money=70&pin=1773&user_id=5&id=6" for ::1 at 2023-08-03 20:11:40 +0530
+Processing by UsersController#transfer as */*
+  Parameters: {"transfer_money"=>"70", "pin"=>"1773", "user_id"=>"5", "id"=>"6"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:55:in `transfer'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:56:in `transfer'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:64:in `transfer'
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 30], ["updated_at", "2023-08-03 14:41:40.354215"], ["id", 5]]
+  ↳ app/controllers/users_controller.rb:64:in `transfer'
+  [1m[35m (7.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:64:in `transfer'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 30], ["updated_at", "2023-08-03 14:41:40.368690"], ["id", 6]]
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+  [1m[35m (6.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+Completed 200 OK in 38ms (Views: 0.3ms | ActiveRecord: 18.0ms | Allocations: 6340)
+
+
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+Started POST "/transfer?transfer_money=10&pin=1773&user_id=5&id=6" for ::1 at 2023-08-03 20:13:38 +0530
+Processing by UsersController#transfer as */*
+  Parameters: {"transfer_money"=>"10", "pin"=>"1773", "user_id"=>"5", "id"=>"6"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ (byebug):1:in `transfer'
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ (byebug):1:in `transfer'
+  [1m[36mCACHE User Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:55:in `transfer'
+  [1m[36mCACHE User Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:56:in `transfer'
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ (byebug):1:in `transfer'
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 20], ["updated_at", "2023-08-03 14:45:21.697033"], ["id", 5]]
+  ↳ (byebug):1:in `transfer'
+  [1m[35m (8.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ (byebug):1:in `transfer'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+  [1m[36mUser Update (0.8ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 50], ["updated_at", "2023-08-03 14:46:03.723795"], ["id", 6]]
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+  [1m[35m (6.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+Completed 200 OK in 145625ms (Views: 0.5ms | ActiveRecord: 35.4ms | Allocations: 392964)
+
+
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+Started POST "/users" for ::1 at 2023-08-03 20:19:09 +0530
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"MIshika", "amount"=>2000, "pin"=>5432, "user"=>{"name"=>"MIshika", "amount"=>2000, "pin"=>5432}}
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:7:in `create'
+  [1m[36mUser Create (1.1ms)[0m  [1m[32mINSERT INTO "users" ("name", "amount", "pin", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "MIshika"], ["amount", 2000], ["pin", 5432], ["created_at", "2023-08-03 14:49:15.674589"], ["updated_at", "2023-08-03 14:49:15.674589"]]
+  ↳ app/controllers/users_controller.rb:7:in `create'
+  [1m[35m (6.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:7:in `create'
+Completed 200 OK in 6623ms (Views: 1.3ms | ActiveRecord: 8.5ms | Allocations: 34988)
+
+
+Started POST "/users" for ::1 at 2023-08-03 20:19:52 +0530
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"baby", "amount"=>0, "pin"=>4321, "user"=>{"name"=>"baby", "amount"=>0, "pin"=>4321}}
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:7:in `create'
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("name", "amount", "pin", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "baby"], ["amount", 0], ["pin", 4321], ["created_at", "2023-08-03 14:49:56.223337"], ["updated_at", "2023-08-03 14:49:56.223337"]]
+  ↳ app/controllers/users_controller.rb:7:in `create'
+  [1m[35m (6.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:7:in `create'
+Completed 200 OK in 3900ms (Views: 0.6ms | ActiveRecord: 8.3ms | Allocations: 34959)
+
+
+Started POST "/users" for ::1 at 2023-08-03 20:21:15 +0530
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"baby1", "amount"=>0, "pin"=>1234, "user"=>{"name"=>"baby1", "amount"=>0, "pin"=>1234}}
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:7:in `create'
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("name", "amount", "pin", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "baby1"], ["amount", 0], ["pin", 1234], ["created_at", "2023-08-03 14:51:19.444313"], ["updated_at", "2023-08-03 14:51:19.444313"]]
+  ↳ app/controllers/users_controller.rb:7:in `create'
+  [1m[35m (6.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:7:in `create'
+Completed 200 OK in 4115ms (Views: 1.0ms | ActiveRecord: 8.1ms | Allocations: 34964)
+
+
+Started POST "/transfer?transfer_money=10&pin=4321&user_id=8&id=9" for ::1 at 2023-08-03 20:21:45 +0530
+Processing by UsersController#transfer as */*
+  Parameters: {"transfer_money"=>"10", "pin"=>"4321", "user_id"=>"8", "id"=>"9"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.8ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 2000], ["updated_at", "2023-08-03 14:53:01.763143"], ["id", 8]]
+  [1m[35m (7.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:55:in `transfer'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:56:in `transfer'
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:64:in `transfer'
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 1990], ["updated_at", "2023-08-03 14:53:24.456741"], ["id", 8]]
+  ↳ app/controllers/users_controller.rb:64:in `transfer'
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:64:in `transfer'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 1990], ["updated_at", "2023-08-03 14:53:24.469385"], ["id", 9]]
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+Completed 200 OK in 98444ms (Views: 0.2ms | ActiveRecord: 18.4ms | Allocations: 46732)
+
+
+Started POST "/transfer?transfer_money=10&pin=4321&user_id=8&id=9" for ::1 at 2023-08-03 20:23:46 +0530
+Processing by UsersController#transfer as */*
+  Parameters: {"transfer_money"=>"10", "pin"=>"4321", "user_id"=>"8", "id"=>"9"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ (byebug):1:in `transfer'
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ (byebug):1:in `transfer'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mUser Destroy (8.0ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+Started POST "/users" for ::1 at 2023-08-03 20:26:11 +0530
+  ↳ app/controllers/users_controller.rb:55:in `transfer'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:56:in `transfer'
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:64:in `transfer'
+  [1m[36mUser Update (1.3ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 1980], ["updated_at", "2023-08-03 14:56:11.245064"], ["id", 8]]
+  ↳ app/controllers/users_controller.rb:64:in `transfer'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:64:in `transfer'
+  [1m[35m (5.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+  [1m[36mUser Update (1.3ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 3970], ["updated_at", "2023-08-03 14:56:11.264715"], ["id", 9]]
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+Completed 200 OK in 144315ms (Views: 0.4ms | ActiveRecord: 13.6ms | Allocations: 48388)
+
+
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"drashti", "amount"=>1000, "pin"=>1234, "user"=>{"name"=>"drashti", "amount"=>1000, "pin"=>1234}}
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:7:in `create'
+  [1m[36mUser Create (2.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "amount", "pin", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "drashti"], ["amount", 1000], ["pin", 1234], ["created_at", "2023-08-03 14:56:13.487770"], ["updated_at", "2023-08-03 14:56:13.487770"]]
+  ↳ app/controllers/users_controller.rb:7:in `create'
+  [1m[35m (6.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:7:in `create'
+Completed 200 OK in 2205ms (Views: 1.1ms | ActiveRecord: 9.9ms | Allocations: 36055)
+
+
+Started POST "/users" for ::1 at 2023-08-03 20:26:39 +0530
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"sapna", "amount"=>0, "pin"=>4321, "user"=>{"name"=>"sapna", "amount"=>0, "pin"=>4321}}
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:7:in `create'
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("name", "amount", "pin", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "sapna"], ["amount", 0], ["pin", 4321], ["created_at", "2023-08-03 14:56:43.143292"], ["updated_at", "2023-08-03 14:56:43.143292"]]
+  ↳ app/controllers/users_controller.rb:7:in `create'
+  [1m[35m (6.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:7:in `create'
+Completed 200 OK in 3938ms (Views: 0.9ms | ActiveRecord: 8.3ms | Allocations: 35986)
+
+
+Started POST "/transfer?transfer_money=100&pin=1234&user_id=10&id=11" for ::1 at 2023-08-03 20:27:07 +0530
+Processing by UsersController#transfer as */*
+  Parameters: {"transfer_money"=>"100", "pin"=>"1234", "user_id"=>"10", "id"=>"11"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ (byebug):1:in `transfer'
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ (byebug):1:in `transfer'
+  [1m[36mCACHE User Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:55:in `transfer'
+  [1m[36mCACHE User Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:56:in `transfer'
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ (byebug):1:in `transfer'
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 900], ["updated_at", "2023-08-03 14:58:49.400553"], ["id", 10]]
+  ↳ (byebug):1:in `transfer'
+  [1m[35m (7.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ (byebug):1:in `transfer'
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 900], ["updated_at", "2023-08-03 15:00:12.091166"], ["id", 11]]
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+  [1m[35m (25.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+Completed 200 OK in 184565ms (Views: 0.2ms | ActiveRecord: 42.2ms | Allocations: 447084)
+
+
+Started POST "/users" for ::1 at 2023-08-03 20:30:53 +0530
+Error occurred while parsing request parameters.
+Contents:
+
+ {
+        "name": "sapna1",
+        "amount": 0,
+        "pin": 0987
+ }
+
+
+Processing by UsersController#create as */*
+Completed 400 Bad Request in 3506ms (ActiveRecord: 0.0ms | Allocations: 36981)
+
+
+  
+ActionDispatch::Http::Parameters::ParseError (765: unexpected token at '{
+        "name": "sapna1",
+        "amount": 0,
+        "pin": 0987
+ }
+
+'):
+  
+app/controllers/users_controller.rb:98:in `user_params'
+app/controllers/users_controller.rb:6:in `create'
+Started POST "/users" for ::1 at 2023-08-03 20:31:22 +0530
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"sapna1", "amount"=>0, "pin"=>9871, "user"=>{"name"=>"sapna1", "amount"=>0, "pin"=>9871}}
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:7:in `create'
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "amount", "pin", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "sapna1"], ["amount", 0], ["pin", 9871], ["created_at", "2023-08-03 15:01:25.972481"], ["updated_at", "2023-08-03 15:01:25.972481"]]
+  ↳ app/controllers/users_controller.rb:7:in `create'
+  [1m[35m (6.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:7:in `create'
+Completed 200 OK in 3609ms (Views: 0.8ms | ActiveRecord: 15.3ms | Allocations: 43568)
+
+
+Started POST "/users" for ::1 at 2023-08-03 20:31:41 +0530
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"varsha", "amount"=>0, "pin"=>1234, "user"=>{"name"=>"varsha", "amount"=>0, "pin"=>1234}}
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:7:in `create'
+  [1m[36mUser Create (1.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "amount", "pin", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "varsha"], ["amount", 0], ["pin", 1234], ["created_at", "2023-08-03 15:01:44.587738"], ["updated_at", "2023-08-03 15:01:44.587738"]]
+  ↳ app/controllers/users_controller.rb:7:in `create'
+  [1m[35m (6.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:7:in `create'
+Completed 200 OK in 2874ms (Views: 1.1ms | ActiveRecord: 8.9ms | Allocations: 39588)
+
+
+Started POST "/transfer?transfer_money=100&pin=1234&user_id=12&id=13" for ::1 at 2023-08-03 20:31:57 +0530
+Processing by UsersController#transfer as */*
+  Parameters: {"transfer_money"=>"100", "pin"=>"1234", "user_id"=>"12", "id"=>"13"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:55:in `transfer'
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:56:in `transfer'
+Completed 200 OK in 3045ms (Views: 0.3ms | ActiveRecord: 2.3ms | Allocations: 38286)
+
+
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mUser Destroy (8.1ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+Started POST "/users" for ::1 at 2023-08-03 20:33:25 +0530
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"somi", "amount"=>1000, "pin"=>1234, "user"=>{"name"=>"somi", "amount"=>1000, "pin"=>1234}}
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:7:in `create'
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("name", "amount", "pin", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "somi"], ["amount", 1000], ["pin", 1234], ["created_at", "2023-08-03 15:03:32.441567"], ["updated_at", "2023-08-03 15:03:32.441567"]]
+  ↳ app/controllers/users_controller.rb:7:in `create'
+  [1m[35m (6.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:7:in `create'
+Completed 200 OK in 6969ms (Views: 0.9ms | ActiveRecord: 8.3ms | Allocations: 39555)
+
+
+Started POST "/users" for ::1 at 2023-08-03 20:33:49 +0530
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"jekky", "amount"=>1000, "pin"=>4321, "user"=>{"name"=>"jekky", "amount"=>1000, "pin"=>4321}}
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:7:in `create'
+  [1m[36mUser Create (1.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "amount", "pin", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "jekky"], ["amount", 1000], ["pin", 4321], ["created_at", "2023-08-03 15:03:52.554349"], ["updated_at", "2023-08-03 15:03:52.554349"]]
+  ↳ app/controllers/users_controller.rb:7:in `create'
+  [1m[35m (6.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:7:in `create'
+Completed 200 OK in 2748ms (Views: 1.1ms | ActiveRecord: 8.7ms | Allocations: 39557)
+
+
+Started POST "/transfer?transfer_money=100&pin=1234&user_id=14&id=15" for ::1 at 2023-08-03 20:34:08 +0530
+Processing by UsersController#transfer as */*
+  Parameters: {"transfer_money"=>"100", "pin"=>"1234", "user_id"=>"14", "id"=>"15"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:55:in `transfer'
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:56:in `transfer'
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:64:in `transfer'
+  [1m[36mUser Update (0.9ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 900], ["updated_at", "2023-08-03 15:04:11.523059"], ["id", 14]]
+  ↳ app/controllers/users_controller.rb:64:in `transfer'
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:64:in `transfer'
+Completed 500 Internal Server Error in 3064ms (ActiveRecord: 10.0ms | Allocations: 40572)
+
+
+  
+ArgumentError (invalid radix 1000):
+  
+app/controllers/users_controller.rb:65:in `to_i'
+app/controllers/users_controller.rb:65:in `transfer'
+Started POST "/transfer?transfer_money=100&pin=1234&user_id=14&id=15" for ::1 at 2023-08-03 20:34:37 +0530
+Processing by UsersController#transfer as */*
+  Parameters: {"transfer_money"=>"100", "pin"=>"1234", "user_id"=>"14", "id"=>"15"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:55:in `transfer'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:56:in `transfer'
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:64:in `transfer'
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 800], ["updated_at", "2023-08-03 15:04:40.355174"], ["id", 14]]
+  ↳ app/controllers/users_controller.rb:64:in `transfer'
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:64:in `transfer'
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+  [1m[36mUser Update (1.1ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 1100], ["updated_at", "2023-08-03 15:04:40.369166"], ["id", 15]]
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+  [1m[35m (6.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:66:in `transfer'
+Completed 200 OK in 2570ms (Views: 0.1ms | ActiveRecord: 25.8ms | Allocations: 48255)
+
+
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+DEPRECATION WARNING: Using `bin/rake routes` is deprecated and will be removed in Rails 6.1. Use `bin/rails routes` instead.
+ (called from load at /usr/share/rvm/gems/ruby-2.5.8/bin/rake:25)
+Started GET "/users" for ::1 at 2023-08-04 10:46:13 +0530
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as */*
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms | Allocations: 92)
+
+
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+Started GET "/users" for ::1 at 2023-08-04 10:47:04 +0530
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+Completed 200 OK in 29ms (Views: 14.5ms | ActiveRecord: 8.5ms | Allocations: 7287)
+
+
+Started GET "/users" for ::1 at 2023-08-04 10:48:16 +0530
+Processing by UsersController#index as */*
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 924)
+
+
+Started GET "/users" for ::1 at 2023-08-04 10:48:33 +0530
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+Completed 200 OK in 15ms (Views: 11.2ms | ActiveRecord: 2.7ms | Allocations: 6320)
+
+
+Started POST "/deposite?deposite=10000&user_id=14&pin=1234" for ::1 at 2023-08-04 10:49:33 +0530
+Processing by UsersController#deposite as */*
+  Parameters: {"deposite"=>"10000", "user_id"=>"14", "pin"=>"1234"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:26:in `deposite'
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:32:in `deposite'
+  [1m[36mUser Update (1.8ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 10800], ["updated_at", "2023-08-04 05:19:38.778027"], ["id", 14]]
+  ↳ app/controllers/users_controller.rb:32:in `deposite'
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:32:in `deposite'
+Completed 200 OK in 5637ms (Views: 0.5ms | ActiveRecord: 5.8ms | Allocations: 94004)
+
+
+Started POST "/withdraw?withdraw=100&user_id=14&pin=1234" for ::1 at 2023-08-04 10:50:02 +0530
+Processing by UsersController#withdraw as */*
+  Parameters: {"withdraw"=>"100", "user_id"=>"14", "pin"=>"1234"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:43:in `withdraw'
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:50:in `withdraw'
+  [1m[36mUser Update (1.0ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 10700], ["updated_at", "2023-08-04 05:20:05.781461"], ["id", 14]]
+  ↳ app/controllers/users_controller.rb:50:in `withdraw'
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:50:in `withdraw'
+Completed 200 OK in 3546ms (Views: 0.4ms | ActiveRecord: 4.6ms | Allocations: 39996)
+
+
+Started POST "/transfer?transfer_money=1000&pin=1234&user_id=14&id=15" for ::1 at 2023-08-04 10:50:40 +0530
+Processing by UsersController#transfer as */*
+  Parameters: {"transfer_money"=>"1000", "pin"=>"1234", "user_id"=>"14", "id"=>"15"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:64:in `transfer'
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:65:in `transfer'
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:73:in `transfer'
+  [1m[36mUser Update (1.5ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 9700], ["updated_at", "2023-08-04 05:20:43.745673"], ["id", 14]]
+  ↳ app/controllers/users_controller.rb:73:in `transfer'
+  [1m[35m (3.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:73:in `transfer'
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:75:in `transfer'
+  [1m[36mUser Update (1.3ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 2100], ["updated_at", "2023-08-04 05:20:43.763948"], ["id", 15]]
+  ↳ app/controllers/users_controller.rb:75:in `transfer'
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:75:in `transfer'
+Completed 200 OK in 3400ms (Views: 0.3ms | ActiveRecord: 11.7ms | Allocations: 42999)
+
+
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6912912541936343250)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateTransactions (20230804064323)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (21.8ms)[0m  [1m[35mCREATE TABLE "transactions" ("id" bigserial primary key, "transaction_type" character varying, "t_amount" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230804064323"]]
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddUserIdTotransactions (20230804064959)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "transactions" ADD "user_id_id" bigint[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE  INDEX  "index_transactions_on_user_id_id" ON "transactions"  ("user_id_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230804064959"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(6912912541936343250)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6912912541936343250)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddUserIdTotransactions (20230804064959)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.6ms)[0m  [1m[35mALTER TABLE "transactions" DROP COLUMN "user_id_id"[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.4ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20230804064959"]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(6912912541936343250)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6912912541936343250)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddUserIdTotransactions (20230804064959)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(6912912541936343250)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6912912541936343250)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateTransactions (20230804064323)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.2ms)[0m  [1m[35mDROP TABLE "transactions"[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.4ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20230804064323"]]
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(6912912541936343250)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6912912541936343250)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateTransactions (20230804065722)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(6912912541936343250)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6912912541936343250)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateTransactions (20230804065722)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (22.0ms)[0m  [1m[35mCREATE TABLE "transactions" ("id" bigserial primary key, "transaction_type" character varying, "t_amount" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230804065722"]]
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddUserToTransactions (20230804065752)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "transactions" ADD "user_id" bigint[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE  INDEX  "index_transactions_on_user_id" ON "transactions"  ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230804065752"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(6912912541936343250)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6912912541936343250)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(6912912541936343250)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+DEPRECATION WARNING: Using `bin/rake routes` is deprecated and will be removed in Rails 6.1. Use `bin/rails routes` instead.
+ (called from load at /usr/share/rvm/gems/ruby-2.5.8/bin/rake:25)
+Started POST "/transactions" for ::1 at 2023-08-04 12:40:35 +0530
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/home/ankush/bankingproject/app/controllers/transactions_controller.rb:24: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/controllers/transactions_controller.rb:24: syntax error, unexpected end-of-input, expecting keyword_end
+app/controllers/transactions_controller.rb:24: syntax error, unexpected end-of-input, expecting keyword_end
+Started POST "/transactions" for ::1 at 2023-08-04 12:41:17 +0530
+  
+NoMethodError (undefined method `belong_to' for #<Class:0x0000562e17f343c8>
+Did you mean?  belongs_to):
+  
+app/models/transaction.rb:2:in `<class:Transaction>'
+app/models/transaction.rb:1:in `<top (required)>'
+Started POST "/transactions" for ::1 at 2023-08-04 12:41:52 +0530
+Processing by TransactionsController#create as */*
+  Parameters: {"user_id"=>14, "transaction_type"=>"deposite", "t_amount"=>1000, "transaction"=>{"transaction_type"=>"deposite", "t_amount"=>1000, "user_id"=>14}}
+Completed 500 Internal Server Error in 23547ms (ActiveRecord: 1.5ms | Allocations: 231780)
+
+
+  
+NameError (undefined local variable or method `user_id' for #<TransactionsController:0x0000562e1747ae28>
+Did you mean?  user_url):
+  
+app/controllers/transactions_controller.rb:20:in `transaction_params'
+app/controllers/transactions_controller.rb:6:in `create'
+Started POST "/transactions" for ::1 at 2023-08-04 12:42:48 +0530
+Processing by TransactionsController#create as */*
+  Parameters: {"user_id"=>14, "transaction_type"=>"deposite", "t_amount"=>1000, "transaction"=>{"transaction_type"=>"deposite", "t_amount"=>1000, "user_id"=>14}}
+Completed 500 Internal Server Error in 2859ms (ActiveRecord: 1.7ms | Allocations: 108310)
+
+
+  
+NameError (undefined local variable or method `user' for #<TransactionsController:0x00007fb7505d3ea0>):
+  
+app/controllers/transactions_controller.rb:20:in `transaction_params'
+app/controllers/transactions_controller.rb:6:in `create'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6912912541936343250)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(6912912541936343250)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (5023.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS "db/development_pg"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "db/development_ppost"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "db/test_ppost"[0m
+  [1m[35m (230.2ms)[0m  [1m[35mCREATE DATABASE "db/development_ppost" ENCODING = 'utf8'[0m
+  [1m[35m (88.1ms)[0m  [1m[35mCREATE DATABASE "db/test_ppost" ENCODING = 'utf8'[0m
+  [1m[35m (10.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (7.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(751863032155406115)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20230803053318)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "amount" integer, "pin" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230803053318"]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAccounts (20230803053336)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "accounts" ("id" bigserial primary key, "user_id" bigint, "account_number" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE  INDEX  "index_accounts_on_user_id" ON "accounts"  ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230803053336"]]
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTransactions (20230804065722)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.7ms)[0m  [1m[35mCREATE TABLE "transactions" ("id" bigserial primary key, "transaction_type" character varying, "t_amount" integer, "user_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE  INDEX  "index_transactions_on_user_id" ON "transactions"  ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230804065722"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddUserToTransactions (20230804065752)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "transactions" ADD "user_id" bigint[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(751863032155406115)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-08-04 07:20:39.581167"], ["updated_at", "2023-08-04 07:20:39.581167"]]
+  [1m[35m (2.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (38.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "db/development_ppost"[0m
+  [1m[35m (22.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "db/test_ppost"[0m
+  [1m[35m (94.5ms)[0m  [1m[35mCREATE DATABASE "db/development_ppost" ENCODING = 'utf8'[0m
+  [1m[35m (87.1ms)[0m  [1m[35mCREATE DATABASE "db/test_ppost" ENCODING = 'utf8'[0m
+  [1m[35m (11.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (7.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(751863032155406115)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20230803053318)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "amount" integer, "pin" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230803053318"]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAccounts (20230803053336)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "accounts" ("id" bigserial primary key, "user_id" bigint, "account_number" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE  INDEX  "index_accounts_on_user_id" ON "accounts"  ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230803053336"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTransactions (20230804065722)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.0ms)[0m  [1m[35mCREATE TABLE "transactions" ("id" bigserial primary key, "transaction_type" character varying, "t_amount" integer, "user_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE  INDEX  "index_transactions_on_user_id" ON "transactions"  ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230804065722"]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddUserToTransactions (20230804065752)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.3ms)[0m  [1m[35mALTER TABLE "transactions" ADD "user_id" bigint[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(751863032155406115)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-08-04 07:23:15.140193"], ["updated_at", "2023-08-04 07:23:15.140193"]]
+  [1m[35m (3.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE DATABASE "db/development_ppost" ENCODING = 'utf8'[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE DATABASE "db/test_ppost" ENCODING = 'utf8'[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (23.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "db/development_ppost"[0m
+  [1m[35m (22.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS "db/test_ppost"[0m
+  [1m[35m (91.9ms)[0m  [1m[35mCREATE DATABASE "db/development_ppost" ENCODING = 'utf8'[0m
+  [1m[35m (83.2ms)[0m  [1m[35mCREATE DATABASE "db/test_ppost" ENCODING = 'utf8'[0m
+  [1m[35m (10.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (8.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(751863032155406115)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20230803053318)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "amount" integer, "pin" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230803053318"]]
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAccounts (20230803053336)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "accounts" ("id" bigserial primary key, "user_id" bigint, "account_number" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE  INDEX  "index_accounts_on_user_id" ON "accounts"  ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230803053336"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTransactions (20230804065722)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.4ms)[0m  [1m[35mCREATE TABLE "transactions" ("id" bigserial primary key, "transaction_type" character varying, "t_amount" integer, "user_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_77364e6416"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE  INDEX  "index_transactions_on_user_id" ON "transactions"  ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230804065722"]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddUserToTransactions (20230804065752)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "transactions" ADD "user_id" bigint[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(751863032155406115)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-08-04 07:24:40.361760"], ["updated_at", "2023-08-04 07:24:40.361760"]]
+  [1m[35m (3.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (31.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "db/development_ppost"[0m
+  [1m[35m (22.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "db/test_ppost"[0m
+  [1m[35m (82.3ms)[0m  [1m[35mCREATE DATABASE "db/development_ppost" ENCODING = 'utf8'[0m
+  [1m[35m (77.1ms)[0m  [1m[35mCREATE DATABASE "db/test_ppost" ENCODING = 'utf8'[0m
+  [1m[35m (12.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (7.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(751863032155406115)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20230803053318)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "amount" integer, "pin" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230803053318"]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTransactions (20230804065722)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.1ms)[0m  [1m[35mCREATE TABLE "transactions" ("id" bigserial primary key, "transaction_type" character varying, "t_amount" integer, "user_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_77364e6416"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE  INDEX  "index_transactions_on_user_id" ON "transactions"  ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230804065722"]]
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-08-04 07:26:45.782223"], ["updated_at", "2023-08-04 07:26:45.782223"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(751863032155406115)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+DEPRECATION WARNING: Using `bin/rake routes` is deprecated and will be removed in Rails 6.1. Use `bin/rails routes` instead.
+ (called from load at /usr/share/rvm/gems/ruby-2.5.8/bin/rake:25)
+Started GET "/all_transactions" for ::1 at 2023-08-04 13:09:57 +0530
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/home/ankush/bankingproject/app/controllers/transactions_controller.rb:15: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/controllers/transactions_controller.rb:15: syntax error, unexpected end-of-input, expecting keyword_end
+app/controllers/transactions_controller.rb:15: syntax error, unexpected end-of-input, expecting keyword_end
+Started GET "/all_transactions" for ::1 at 2023-08-04 13:10:20 +0530
+Processing by TransactionsController#all_transactions as */*
+  Parameters: {"user_id"=>14, "transaction_type"=>"deposite", "t_amount"=>1000, "transaction"=>{"transaction_type"=>"deposite", "t_amount"=>1000, "user_id"=>14}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ (byebug):1:in `all_transactions'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:6:in `all_transactions'
+Completed 200 OK in 41751ms (Views: 0.5ms | ActiveRecord: 5.7ms | Allocations: 95492)
+
+
+Started GET "/all_transactions?user_id=14" for ::1 at 2023-08-04 13:11:07 +0530
+Processing by TransactionsController#all_transactions as */*
+  Parameters: {"user_id"=>"14"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:6:in `all_transactions'
+Completed 200 OK in 4800ms (Views: 0.3ms | ActiveRecord: 0.8ms | Allocations: 37228)
+
+
+Started POST "/deposite?deposite=10000&user_id=14&pin=1234" for ::1 at 2023-08-04 13:11:22 +0530
+Processing by UsersController#deposite as */*
+  Parameters: {"deposite"=>"10000", "user_id"=>"14", "pin"=>"1234"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:26:in `deposite'
+Completed 204 No Content in 3283ms (ActiveRecord: 1.0ms | Allocations: 37506)
+
+
+Started POST "/withdraw?withdraw=100&user_id=14&pin=1234" for ::1 at 2023-08-04 13:11:42 +0530
+Processing by UsersController#withdraw as */*
+  Parameters: {"withdraw"=>"100", "user_id"=>"14", "pin"=>"1234"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:44:in `withdraw'
+Completed 204 No Content in 3292ms (ActiveRecord: 1.1ms | Allocations: 37470)
+
+
+Started POST "/deposite?deposite=10000&user_id=14&pin=1234" for ::1 at 2023-08-04 13:14:15 +0530
+Processing by UsersController#deposite as */*
+  Parameters: {"deposite"=>"10000", "user_id"=>"14", "pin"=>"1234"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:26:in `deposite'
+Completed 204 No Content in 3584ms (ActiveRecord: 4.8ms | Allocations: 39226)
+
+
+Started POST "/deposite?deposite=10000&user_id=14&pin=1234" for ::1 at 2023-08-04 13:14:38 +0530
+Processing by UsersController#deposite as */*
+  Parameters: {"deposite"=>"10000", "user_id"=>"14", "pin"=>"1234"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:26:in `deposite'
+Completed 204 No Content in 2599ms (ActiveRecord: 5.5ms | Allocations: 39220)
+
+
+Started GET "/users" for ::1 at 2023-08-04 13:14:56 +0530
+Processing by UsersController#index as */*
+  [1m[36mUser Load (4.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+Completed 200 OK in 8ms (Views: 3.3ms | ActiveRecord: 4.0ms | Allocations: 899)
+
+
+Started POST "/users" for ::1 at 2023-08-04 13:15:05 +0530
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"jekky", "amount"=>1000, "pin"=>4321, "user"=>{"name"=>"jekky", "amount"=>1000, "pin"=>4321}}
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Create (1.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "amount", "pin", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "jekky"], ["amount", 1000], ["pin", 4321], ["created_at", "2023-08-04 07:45:10.148366"], ["updated_at", "2023-08-04 07:45:10.148366"]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+Completed 200 OK in 4344ms (Views: 0.6ms | ActiveRecord: 9.2ms | Allocations: 44102)
+
+
+Started POST "/users" for ::1 at 2023-08-04 13:15:26 +0530
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"somi", "amount"=>1000, "pin"=>1234, "user"=>{"name"=>"somi", "amount"=>1000, "pin"=>1234}}
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Create (2.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "amount", "pin", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "somi"], ["amount", 1000], ["pin", 1234], ["created_at", "2023-08-04 07:45:30.987790"], ["updated_at", "2023-08-04 07:45:30.987790"]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[35m (7.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+Completed 200 OK in 4978ms (Views: 1.1ms | ActiveRecord: 11.2ms | Allocations: 39634)
+
+
+Started POST "/deposite?deposite=10000&user_id=2&pin=1234" for ::1 at 2023-08-04 13:15:51 +0530
+Processing by UsersController#deposite as */*
+  Parameters: {"deposite"=>"10000", "user_id"=>"2", "pin"=>"1234"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:26:in `deposite'
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:32:in `deposite'
+  [1m[36mUser Update (1.6ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 11000], ["updated_at", "2023-08-04 07:45:55.868547"], ["id", 2]]
+  ↳ app/controllers/users_controller.rb:32:in `deposite'
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:32:in `deposite'
+Completed 200 OK in 4214ms (Views: 0.4ms | ActiveRecord: 5.3ms | Allocations: 40115)
+
+
+Started POST "/deposite?deposite=10000&user_id=2&pin=1234" for ::1 at 2023-08-04 13:16:08 +0530
+Processing by UsersController#deposite as */*
+  Parameters: {"deposite"=>"10000", "user_id"=>"2", "pin"=>"1234"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:26:in `deposite'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:32:in `deposite'
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 21000], ["updated_at", "2023-08-04 07:46:12.141189"], ["id", 2]]
+  ↳ app/controllers/users_controller.rb:32:in `deposite'
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:32:in `deposite'
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:33:in `deposite'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:33:in `deposite'
+  [1m[36mTransaction Create (0.9ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_type", "t_amount", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["transaction_type", "deposite"], ["t_amount", 10000], ["user_id", 2], ["created_at", "2023-08-04 07:46:12.170725"], ["updated_at", "2023-08-04 07:46:12.170725"]]
+  ↳ app/controllers/users_controller.rb:33:in `deposite'
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:33:in `deposite'
+Completed 200 OK in 4038ms (Views: 0.2ms | ActiveRecord: 18.0ms | Allocations: 57257)
+
+
+Started GET "/all_transactions?user_id=2" for ::1 at 2023-08-04 13:16:28 +0530
+Processing by TransactionsController#all_transactions as */*
+  Parameters: {"user_id"=>"2"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:6:in `all_transactions'
+Completed 200 OK in 3263ms (Views: 1.4ms | ActiveRecord: 1.0ms | Allocations: 37349)
+
+
+Started GET "/all_transactions?user_id=2" for ::1 at 2023-08-04 13:38:25 +0530
+Processing by TransactionsController#all_transactions as */*
+  Parameters: {"user_id"=>"2"}
+  [1m[36mTransaction Load (1.7ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/transactions_controller.rb:7:in `all_transactions'
+Completed 200 OK in 3159ms (Views: 1.4ms | ActiveRecord: 2.6ms | Allocations: 42484)
+
+
+Started POST "/deposite?deposite=5000&user_id=1&pin=4321" for ::1 at 2023-08-04 13:38:59 +0530
+Processing by UsersController#deposite as */*
+  Parameters: {"deposite"=>"5000", "user_id"=>"1", "pin"=>"4321"}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:26:in `deposite'
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:32:in `deposite'
+  [1m[36mUser Update (4.7ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 6000], ["updated_at", "2023-08-04 08:09:02.440344"], ["id", 1]]
+  ↳ app/controllers/users_controller.rb:32:in `deposite'
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:32:in `deposite'
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:33:in `deposite'
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:33:in `deposite'
+  [1m[36mTransaction Create (1.1ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_type", "t_amount", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["transaction_type", "deposite"], ["t_amount", 5000], ["user_id", 1], ["created_at", "2023-08-04 08:09:02.480419"], ["updated_at", "2023-08-04 08:09:02.480419"]]
+  ↳ app/controllers/users_controller.rb:33:in `deposite'
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:33:in `deposite'
+Completed 200 OK in 2995ms (Views: 0.2ms | ActiveRecord: 13.6ms | Allocations: 49414)
+
+
+Started GET "/all_transactions?user_id=1" for ::1 at 2023-08-04 13:39:15 +0530
+Processing by TransactionsController#all_transactions as */*
+  Parameters: {"user_id"=>"1"}
+  [1m[36mTransaction Load (2.0ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/transactions_controller.rb:7:in `all_transactions'
+Completed 200 OK in 3541ms (Views: 1.2ms | ActiveRecord: 2.0ms | Allocations: 37450)
+
+
+Started POST "/transfer?transfer_money=1000&pin=4321&user_id=2&id=1" for ::1 at 2023-08-04 13:42:47 +0530
+Processing by UsersController#transfer as */*
+  Parameters: {"transfer_money"=>"1000", "pin"=>"4321", "user_id"=>"2", "id"=>"1"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:67:in `transfer'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:68:in `transfer'
+Completed 200 OK in 4730ms (Views: 0.2ms | ActiveRecord: 15.7ms | Allocations: 43928)
+
+
+Started POST "/transfer?transfer_money=1000&pin=1234&user_id=2&id=1" for ::1 at 2023-08-04 13:43:03 +0530
+Processing by UsersController#transfer as */*
+  Parameters: {"transfer_money"=>"1000", "pin"=>"1234", "user_id"=>"2", "id"=>"1"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:67:in `transfer'
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:68:in `transfer'
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:77:in `transfer'
+  [1m[36mUser Update (1.3ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 20000], ["updated_at", "2023-08-04 08:13:06.365045"], ["id", 2]]
+  ↳ app/controllers/users_controller.rb:77:in `transfer'
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:77:in `transfer'
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:78:in `transfer'
+  [1m[36mUser Update (1.8ms)[0m  [1m[33mUPDATE "users" SET "amount" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["amount", 7000], ["updated_at", "2023-08-04 08:13:06.382655"], ["id", 1]]
+  ↳ app/controllers/users_controller.rb:78:in `transfer'
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:78:in `transfer'
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:79:in `transfer'
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:79:in `transfer'
+  [1m[36mTransaction Create (0.7ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_type", "t_amount", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["transaction_type", "transfer"], ["t_amount", 1000], ["user_id", 2], ["created_at", "2023-08-04 08:13:06.447862"], ["updated_at", "2023-08-04 08:13:06.447862"]]
+  ↳ app/controllers/users_controller.rb:79:in `transfer'
+  [1m[35m (3.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:79:in `transfer'
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:80:in `transfer'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:80:in `transfer'
+  [1m[36mTransaction Create (0.6ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_type", "t_amount", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["transaction_type", "receive"], ["t_amount", 1000], ["user_id", 1], ["created_at", "2023-08-04 08:13:06.465309"], ["updated_at", "2023-08-04 08:13:06.465309"]]
+  ↳ app/controllers/users_controller.rb:80:in `transfer'
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:80:in `transfer'
+Completed 200 OK in 2699ms (Views: 0.2ms | ActiveRecord: 29.2ms | Allocations: 55748)
+
+
+Started GET "/all_transactions?user_id=1" for ::1 at 2023-08-04 13:43:20 +0530
+Processing by TransactionsController#all_transactions as */*
+  Parameters: {"user_id"=>"1"}
+  [1m[36mTransaction Load (1.0ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/transactions_controller.rb:7:in `all_transactions'
+Completed 200 OK in 2760ms (Views: 2.1ms | ActiveRecord: 1.0ms | Allocations: 37617)
+
+
+DEPRECATION WARNING: Using `bin/rake routes` is deprecated and will be removed in Rails 6.1. Use `bin/rails routes` instead.
+ (called from load at /usr/share/rvm/gems/ruby-2.5.8/bin/rake:25)
+Started GET "/users?user_id=2" for ::1 at 2023-08-04 14:06:53 +0530
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+AbstractController::ActionNotFound (The action 'index' could not be found for UsersController):
+  
+actionpack (6.0.6.1) lib/abstract_controller/base.rb:131:in `process'
+actionpack (6.0.6.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.6.1) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.6.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.6.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.6.1) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.6.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.6.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.6.1) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.2.8) lib/rack/etag.rb:27:in `call'
+rack (2.2.8) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.8) lib/rack/head.rb:12:in `call'
+activerecord (6.0.6.1) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.6.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.8) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.8) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/host_authorization.rb:103:in `call'
+railties (6.0.6.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.12) lib/puma/configuration.rb:228:in `call'
+puma (4.3.12) lib/puma/server.rb:727:in `handle_request'
+puma (4.3.12) lib/puma/server.rb:476:in `process_client'
+puma (4.3.12) lib/puma/server.rb:332:in `block in run'
+puma (4.3.12) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/users?user_id=2" for ::1 at 2023-08-04 14:07:35 +0530
+Processing by UsersController#index as */*
+  Parameters: {"user_id"=>"2"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6:in `index'
+Completed 500 Internal Server Error in 4094ms (ActiveRecord: 7.9ms | Allocations: 91630)
+
+
+  
+NoMethodError (undefined method `name' for nil:NilClass):
+  
+app/controllers/users_controller.rb:8:in `index'
+Started GET "/users?user_id=2" for ::1 at 2023-08-04 14:07:57 +0530
+Processing by UsersController#index as */*
+  Parameters: {"user_id"=>"2"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6:in `index'
+Completed 200 OK in 2758ms (Views: 0.2ms | ActiveRecord: 10.7ms | Allocations: 43599)
+
+
+Started GET "/users?user_id=2" for ::1 at 2023-08-04 14:08:29 +0530
+Processing by UsersController#index as */*
+  Parameters: {"user_id"=>"2"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6:in `index'
+Completed 200 OK in 2952ms (Views: 0.2ms | ActiveRecord: 10.7ms | Allocations: 43301)
+
+
+Started GET "/users?user_id=2" for ::1 at 2023-08-04 14:09:07 +0530
+Processing by UsersController#index as */*
+  Parameters: {"user_id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6:in `index'
+Completed 500 Internal Server Error in 1848ms (Views: 0.2ms | ActiveRecord: 3.8ms | Allocations: 43357)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  
+app/controllers/users_controller.rb:11:in `index'
+Started GET "/users?user_id=2" for ::1 at 2023-08-04 14:09:28 +0530
+Processing by UsersController#index as */*
+  Parameters: {"user_id"=>"2"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6:in `index'
+Completed 200 OK in 3151ms (Views: 0.2ms | ActiveRecord: 10.3ms | Allocations: 43321)
+
+
+Started GET "/users?user_id=2" for ::1 at 2023-08-04 14:10:22 +0530
+Processing by UsersController#index as */*
+  Parameters: {"user_id"=>"2"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6:in `index'
+Completed 200 OK in 2978ms (Views: 0.1ms | ActiveRecord: 9.8ms | Allocations: 43284)
+
+
+Started GET "/users?user_id=2" for ::1 at 2023-08-04 14:10:38 +0530
+Processing by UsersController#index as */*
+  Parameters: {"user_id"=>"2"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6:in `index'
+Completed 200 OK in 2876ms (Views: 0.3ms | ActiveRecord: 9.4ms | Allocations: 43285)
+
+
+Started GET "/account_block/assessors/project_documents?client_id=4&project_id=3" for ::1 at 2023-08-07 11:29:33 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/account_block/assessors/project_documents"):
+  
+actionpack (6.0.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.6.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.8) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.8) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/host_authorization.rb:103:in `call'
+railties (6.0.6.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.12) lib/puma/configuration.rb:228:in `call'
+puma (4.3.12) lib/puma/server.rb:727:in `handle_request'
+puma (4.3.12) lib/puma/server.rb:476:in `process_client'
+puma (4.3.12) lib/puma/server.rb:332:in `block in run'
+puma (4.3.12) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
